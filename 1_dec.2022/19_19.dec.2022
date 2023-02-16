@@ -1,0 +1,71 @@
+========================================================
+19.dec.2022 - Monday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Reservation_Fixes/v2.0.101
+Happy_Hour_Menu/v2.0.101
+Customer_Module_Offline/v2.0.101
+Socket_Issues/v2.0.101
+GIT_Issues/v2.0.101
+Customer_creation_rewamp/v2.0.101
+chowlyLocation/v2.0.101   already ..exist in ui   ..exist in api
+Modifier_Fixes/v2.0.101   already .. exist in ui  ..exist in api
+SmartWait_Fixes/v2.0.101  already .. exist in ui  ..exist in api
+First_Delivery/v2.0.101 
+Online_Order_GC/v2.0.101
+SmartPOS-reports/v2.0.101 
+Import_Batchwise/v2.0.101   
+
+
+** sql, python, shell scripting, docker kubernetes, gitlab, jenkins, terraform, 
+
+** http://nginx.org/en/docs/http/load_balancing.html#nginx_load_balancing_methods  ..load balancing nginx_load_balancing_methods
+
+http {
+    upstream myapp1 {
+        server srv1.example.com;
+        server srv2.example.com;
+        server srv3.example.com;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://myapp1;
+        }
+    }
+}
+
+** devops project on aws 
+
+Todays-task 19.dec.2022
+1. branches created Today
+
+Reservation_Fixes/v2.0.101
+Happy_Hour_Menu/v2.0.101
+Customer_Module_Offline/v2.0.101
+Socket_Issues/v2.0.101
+GIT_Issues/v2.0.101
+Customer_creation_rewamp/v2.0.101
+chowlyLocation/v2.0.101   already ..exist in ui   ..exist in api
+Modifier_Fixes/v2.0.101   already .. exist in ui  ..exist in api
+SmartWait_Fixes/v2.0.101  already .. exist in ui  ..exist in api
+First_Delivery/v2.0.101 
+Online_Order_GC/v2.0.101
+SmartPOS-reports/v2.0.101 
+Import_Batchwise/v2.0.101 
+
+2. Load balancing
+- worked on nginx configuration to distribute traffic according to api and ui requests.  "work in progress" 
+
+
+** DNS based load balancing
+** #journalctl 
+
+** dns records
+** https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/
+
+** https://www.nginx.com/resources/glossary/dns-load-balancing/
+
+** https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/

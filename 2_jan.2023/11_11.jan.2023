@@ -1,0 +1,349 @@
+========================================================
+11.jan.2023 - Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Kindly create a sprint branch for V101 
+sprint branch name --  Reservation_Cancellation_Payment/
+
+	
+CI_REGISTRY_PASSWORD = vivant@123
+	
+CI_REGISTRY_PASSWORD_PRE = fcX0099b
+	
+CI_REGISTRY_PRE = kazoo-rpm.vivantcorp.com
+	
+CI_REGISTRY_URL = milagro-dev-rpm.milagro.dev
+	
+CI_REGISTRY_USER = vivant_user
+
+CI_REGISTRY_USER_PRE = vivant
+	
+CONTAINER_IMAGE = utilko-ui
+	
+ENV_TYPE_QA = qa
+
+ENV_TYPE = dev
+
+
+
+dev
+3.34.43.233 -lb
+13.209.11.52
+13.125.86.204
+
+qa
+3.39.227.194
+43.201.62.110
+
+qaui.utiliko.xyz
+qapi.utiliko.xyz
+
+
+*reviewing dev servers autodeployment
+
+
+
+
+
+
+@Samrat please merge into qa-release/sprint011023
+
+landscape-filter/sprint011023 -> qa-release/sprint011023
+git-issues/sprint011023 -> qa-release/sprint011023
+
+landscape-filter/sprint011023 -> qa-release/sprint011023
+CONFLICT (content): Merge conflict in src/app/admin/task/task-list/task-list.component.ts
+
+
+
+
+
+https://docs.google.com/document/d/1SySm2dqWJITfumsbZF3VySCpDBTJS3EY1TxgYt0o7a4/edit
+
+** creating of qa-server
+** required maitainer access on project
+** nginx configuring
+** SSL apply
+** creating runners
+** cicd 
+** master-master replication 
+
+issues.
+* How to exclude a file while merging git branches. It may cause conflicts while merging.
+* process to push change in branches
+* 
+
+sudo apt-get install ca-certificates curl gnupg lsb-release
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
+sudo apt-get install gitlab-runner
+
+https://medium.com/@wehappyfewkd/mixing-and-maching-branches-with-gitlab-runners-692de0955e45
+
+
+
+image: "docker:19.03.15"
+services:
+  - docker:19.03.15-dind
+.only-dev:
+  only:
+   - dev
+stages:
+  - build
+  - deploys1
+  - deploys2
+build:
+  extends: .only-dev
+  stage: build
+  timeout: 3 hours
+  tags:
+    - utilko-ui-runner
+  script:
+
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+deploys1:
+  extends: .only-dev
+  stage: deploys1
+  tags:
+    - utilko-ui-runner2
+  script:
+
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+deploys2:
+  extends: .only-dev
+  stage: deploys2
+  tags:
+    - utilko-ui-runner
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+
+
+###
+
+
+# stages:
+#   - deploy
+# package:
+#   environment:
+#     name: utiliko dev UI
+#     url: https://ui.utiliko.io
+#   tags:
+#     - dev
+#   only:
+#     - dev
+#   stage: deploy
+#   script:
+#     #- sudo sudo npm install
+#     - npm install
+#     #- apt-get update && apt-get -y install rsync
+#     #- rm -rf ./dist/*
+#     - npm run build
+#     #- rm -rf /var/www/html/utiliko/*
+#     - cp -r /home/ubuntu/builds/hn7oh-tv/0/Utiliko2/utiliko_adminlte_ui/dist/* /var/www/html/utiliko/
+#     - echo "Deployment finish"
+
+
+
+
+image: "docker:19.03.15"
+services:
+  - docker:19.03.15-dind
+stages:
+  - build
+  - deploys1
+  - deploys2
+build for dev:
+  only:
+    variables:
+     - $BRANCH_DEV == "dev"
+  stage: build
+  timeout: 3 hours
+  tags:
+    - utilko-ui-runner
+  script:
+
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+build for qa:
+  only:
+    variables:
+     - $BRANCH_QA == "qa"
+  stage: build
+  timeout: 3 hours
+  tags:
+    - utilko-ui-qa-1
+  script:
+
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}" --build-arg ENV_TYPE_QA=${ENV_TYPE_QA} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE_QA}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+    
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+deploys1 for dev:
+  only:
+    variables:
+     - $BRANCH_DEV == "dev"
+  stage: deploys1
+  tags:
+    - utilko-ui-runner2
+  script:
+
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+deploys1 for qa:
+  only:
+    variables:
+     - $BRANCH_QA == "qa"
+  stage: deploys1
+  tags:
+    - utilko-ui-qa-2
+  script:
+
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+
+
+deploys2 for dev:
+  only:
+    variables:
+     - $BRANCH_DEV == "dev"
+  stage: deploys2
+  tags:
+    - utilko-ui-runner
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+deploys2 for qa:
+  only:
+    variables:
+     - $BRANCH_QA == "qa"
+  stage: deploys2
+  tags:
+    - utilko-ui-qa-1
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 9000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE_QA}:latest"
+
+
+
+
+###
+
+
+# stages:
+#   - deploy
+# package:
+#   environment:
+#     name: utiliko dev UI
+#     url: https://ui.utiliko.io
+#   tags:
+#     - dev
+#   only:
+#     - dev
+#   stage: deploy
+#   script:
+#     #- sudo sudo npm install
+#     - npm install
+#     #- apt-get update && apt-get -y install rsync
+#     #- rm -rf ./dist/*
+#     - npm run build
+#     #- rm -rf /var/www/html/utiliko/*
+#     - cp -r /home/ubuntu/builds/hn7oh-tv/0/Utiliko2/utiliko_adminlte_ui/dist/* /var/www/html/utiliko/
+#     - echo "Deployment finish"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

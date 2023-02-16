@@ -1,0 +1,42 @@
+========================================================
+02.Dec.2022 -Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+AWS 
+** nat gateway, internet gateway, private subnet, public subnet, vpc, vpc endpoints, iam policy.
+** permission boundary, 
+
+KUBERNETES
+** https://www.tutorialspoint.com/kubernetes/index.htm ...KUBERNETES
+---https://www.tutorialspoint.com/kubernetes/kubernetes_architecture.htm
+
+DOCKER
+** https://www.tutorialspoint.com/docker/index.htm
+** #docker info
+** #sudo docker run -p 8080:8080 -p 50000:50000 jenkins
+** https://www.tutorialspoint.com/docker/docker_images.htm 
+** https://www.tutorialspoint.com/docker/docker_containers.htm
+** #sudo docker images -q 
+** #sudo docker inspect jenkins
+
+linux
+** #uname -a
+** diff between apt and apt-get 
+** #apt-cache policy docker-engine
+** what is GPG-key
+
+GIT 
+** git rebase master topic
+** sql, shell scripting, linux, docker, kubernetes, terraform, gitlab-cicd, javascript, wordpress, angular, nodejs, aws -lightsail
+** One domain mapped to multiple ip address is a technique of round robin load balancing.
+** #while sleep 0.5; do curl http://cdui.utiliko.xyz; done
+** Arrage Laptop with high configurations.
+
+imp_info
+-      3.36.93.16        172.26.15.58       
+-      54.204.162.162    172.26.2.244       
+-      34.227.76.200     172.26.12.134  
+
+Issue
+- 34.204.162.162 is responding with cdui url, but 54.204.162.162 not responding with any website.
+- is port 80 for 54.204.162.162 is open.

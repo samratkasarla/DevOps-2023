@@ -1,0 +1,27 @@
+Task-update 17.jan.2023
+- passing variable in dockerfile for qa env :WIP
+- http should automatically pass to https :WIP
+
+
+
+
+
+URL: https://utiliko.xyz/
+Email: mailto:kartik@vivantcorp.com
+Pass: 123456
+
+
+Milagro
+recurringSubscription/sprint190123 from qa 
+created for ui and api
+
+
+milagro
+qa-release/sprint300123 from qa
+created for ui and api
+
+qa 
+  qa-release/sprint190123
+      git-issues/sprint190123
+
+https://stackoverflow.com/questions/33935807/how-to-define-a-variable-in-a-dockerfile

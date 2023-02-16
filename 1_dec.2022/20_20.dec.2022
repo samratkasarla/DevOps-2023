@@ -1,0 +1,197 @@
+========================================================
+20.dec.2022 - Tuesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+slaReport/v4.3.6   both ui and api
+
+:s/^/#
+
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
+
+https://askubuntu.com/questions/740805/how-can-i-remove-all-files-from-current-directory-using-terminal#:~:text=Use%20rm%20*%20from%20within%20the,use%20rm%20%2Dr%20*%20instead.
+
+34.227.76.200
+
+events {
+
+}
+
+http {
+    include /etc/nginx/mime.types;
+
+ #   server_name 34.227.76.200;
+#    root /var/www/html/demo-app;
+
+
+
+     server {
+         listen 80;
+         listen [::]:80;
+         root /var/www/html/newangapp;
+
+index index.html index.htm index.nginx-debian.html;
+
+
+#        server_name  *.milagro.ca;
+        try_files $uri $uri/ /index.php?$args;
+                if (!-e $request_filename) {
+
+                        rewrite ^(.*)$ /index.html;
+                }
+         }
+
+      server {
+        listen 3000;
+       #server_name 34.227.76.200;
+
+      root /var/www/html/demo-app;
+      index index.html index.htm index.nginx-debian.html;
+      try_files $uri $uri/ /index.php?$args;
+      if (!-e $request_filename) {
+      rewrite ^(.*)$ /index.html;
+      }
+
+      }
+}
+        # location = /newangapp {
+         #       return 307 /index.html;
+       # }
+
+
+ #   rewrite /index_page /index.html;
+      #   try_files /index.html;
+
+
+       #  location  /newangapp {
+
+            #proxy_pass http://ui_servers;
+        #    return 200 "cdui from 34.227.76.200\n";
+
+       # }
+        #location = /api {
+            #return 307 /index.html;
+         #   return 200 "cdapi from 34.227.76.200\n";
+        #}
+
+
+
+        #return 200 "Message from cdui 34.227.76.200\n";
+        #location / {
+         #   proxy_pass http://localhost:3100;
+        #}
+
+
+
+   # server {
+    #    listen 80;
+     #   server_name 34.227.76.200;
+        #return 200 "Message from cdapi 34.227.76.200\n";
+      #  location = /api {
+       #     return 200 "cdapi from 34.227.76.200\n";
+       # }
+
+       # root /var/www/html/demo-app;
+    # }
+
+
+
+
+54.204.162.162
+
+events{
+}
+http {
+    include /etc/nginx/mime.types;
+    #upstream ui_servers {
+
+     #   server localhost:3100;
+    #}
+
+
+
+    server {
+
+        listen 80;
+        listen [::]:80;
+
+       # server_name 54.204.162.162;
+        root /var/www/html/newangapp;
+
+index index.html index.htm index.nginx-debian.html;
+
+       try_files $uri $uri/ /index.php?$args;
+             if (!-e $request_filename) {
+
+                        rewrite ^(.*)$ /index.html;
+                }
+           }
+
+    server {
+        listen 3000;
+       #server_name 34.227.76.200;
+
+      root /var/www/html/demo-app;
+      index index.html index.htm index.nginx-debian.html;
+      try_files $uri $uri/ /index.php?$args;
+      if (!-e $request_filename) {
+      rewrite ^(.*)$ /index.html;
+      }
+#      location = / {
+#          return 200 "this is api from 34.227.76.200\n";
+#       proxy_pass http://localhost:3000;
+ #          }
+        }
+
+
+
+      }
+
+        # location = /newangapp {
+        #        return 307 /index.html;
+       # }
+
+        # rewrite /index_page /index.html;
+
+#       }
+
+#        location /newangapp {
+
+           # proxy_pass http://ui_servers;
+           # return 200 "cdui from 54.204.162.162\n";
+
+ #       }
+  #      location = /api {
+            # return 307 /index.html;
+   #         return 200 "cdapi from 54.204.162.162\n";
+    #    }
+
+
+   # }
+       #return 200 "Message from cdui 54.204.162.162\n";
+        # location / {
+         #   proxy_pass http://localhost:3100;
+       # }
+
+    #server {
+
+     #   listen 80;
+      #  server_name 54.204.162.162;
+       # location = /api {
+        #    return 200 "cdapi from 54.204.162.162\n";
+        #}
+
+        #return 200 "Message from cdapi 54.204.162.162\n";
+
+       # root /var/www/html/cdui-utiliko;
+
+      #}
+
+
+      task status 20.dec.2022
+      1. Load balancing with sites server blocks in sites-enabled folder .
+      - configuration is done.
+      - application hosted can be accessed from host server.
+      - Through load balancer apps are not accessible.
+      - working on debugging
+
+      

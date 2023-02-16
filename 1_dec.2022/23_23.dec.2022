@@ -1,0 +1,16 @@
+========================================================
+23.dec.2022 - Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Task - working on autodeployment of project.- 23.dec.2022
+- Two runners are setup on 34.227.76.200 and 54.204.162.162
+- not able to build image with dockerfile on 34.227.76.200. working on this issue
+
+** https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
+** SjeTQNTo-9y7zusyKpJX
+- Dockerizing the node application
+- configuring the runners for jobs
+- .gitlab-cicd.yaml
+- deploying manually without cicd.
+-

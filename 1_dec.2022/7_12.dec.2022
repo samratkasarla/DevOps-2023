@@ -1,0 +1,73 @@
+========================================================
+12.dec.2022 -Monday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+to-do
+load balancing
+dockerizing utiliko and milagro
+auto-deployment with cicd.
+
+
+**delete git-issue/v4.3.6 and create it from qa-release/v4.3.6 ?
+
+** migrate, git-issue, 
+
+** src/app/admin/support/projects/project-form/project-form.componant.ts
+
+** src/app/admin/meetings-and-agenda-list/meetings-and-agenda-list/meetings-and-agenda-list.componant.scss
+
+** stopped for utiliko api branching.
+
+** resoving merge conflict with visual studio
+
+** adding changes to staged area
+
+** git config --global user.name "samrat"
+
+** git config --global user.email "samrat@codengine.co"
+
+** automation-testing/v4.3.6
+
+** MR ....commits behind should be zero while merging branches.
+
+** automation-testing/v4.3.6    ....this is created
+
+** gitlab cicd, master-mster replication, nginx, 
+
+gitlab ci
+** prefer to use ipadrress or hostname in gitlab runner description.
+** gitlab job is set of instructions
+** https://www.youtube.com/watch?v=PGyhBwLyK2U ... 44.44
+
+build laptop:
+    image: alpine
+    tags: 
+        - samrat
+    script: 
+        - echo "Building a laptop"
+        - mkdir build
+        - touch build/computer.txt
+        - echo "Mainboard" >> build/computer.txt
+        - cat build/computer.txt
+        - echo "Keyboard" >> build/computer.txt
+        - cat build/computer.txt
+
+
+person: 
+    name: john
+    age: 23
+    hobbies: 
+        - sports
+        - youtube
+        - hiking
+    address:
+        street: 123 mayfield ave.
+        city: new york
+        zip: 10003
+    experience:
+        - title: Junior Dev
+          period: 2000 - 2005
+        - title: senior Dev
+          period: since 2005
+
+**  git branching startegy
+** https://support.google.com/chrome/answer/95617?visit_id=638064600351344418-431467506&p=ui_security_indicator&rd=1

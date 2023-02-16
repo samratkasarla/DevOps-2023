@@ -1,0 +1,13 @@
+========================================================
+18.dec.2022 - Sunday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+** docker run 
+
+** https://docs.docker.com/engine/reference/commandline/run/   .. docker run commad 
+
+** docker run -v /doesnt/exist:/foo -w /foo -i -t ubuntu bash
+
+** docker run --expose 80 ubuntu bash
+
+** 

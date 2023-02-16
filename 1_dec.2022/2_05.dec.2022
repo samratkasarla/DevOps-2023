@@ -1,0 +1,43 @@
+========================================================
+05.dec.2022 -Monday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+** Kubernetes, Docker, Terraform, AWS, linux, ubuntu, vpc, iam, cloudwatch, s3, storage classes, static website hosting in s3.
+** Lambda, dynamo db, Rds, CDN, route 53, Application load balancer, Network load balancer, Nginx, Apache, Python, Shell scripting.
+** reverse proxy server, jenkins, gitlab cicd. yaml language, sofware development lifecycle.
+** Roud robin load balancing.
+** When domain is mapped to two ip address. round robin load balancing happens there.
+** Dockerizing node app and angular.
+** 
+
+Kubernetes
+** apiVersion: v1
+   kind: pod
+   metadata:
+      name: Tesing_for_Image_pull -----------> 1
+      spec:
+         containers:
+            - name: neo4j-server ------------------------> 2
+            image: <Name of the Docker image>----------> 3
+            imagePullPolicy: Always ------------->4
+            command: ["echo", "SUCCESS"] ------------------->
+** #kubectl create –f Tesing_for_Image_pull
+** #kubectl log Tesing_for_Image_pull 
+** #kubectl describe jobs/py
+** 
+
+Shell scripting
+** https://www.tutorialspoint.com/unix/shell_scripting.htm
+** how can we call variable .
+** awk and expr 
+** arithmatic operator, boolean operator, Relational operator, string operator, file test operator.
+** sed ,awk.
+
+linux
+** user administration, chmod, chown, chgrp, umask number. disk management, physical volumne, logical volume.
+** permissions in linux, special permission, cronjob scheduling,
+
+imp_info
+-      3.36.93.16        172.26.15.58       
+-      54.204.162.162    172.26.2.244       
+-      34.227.76.200     172.26.12.134 

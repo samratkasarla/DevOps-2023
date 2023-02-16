@@ -1,0 +1,352 @@
+###
+Nobody was aware that dockerfile is not environment specific. before i started cicd for multiple branches.
+one extra step in replication took time.
+No knowledge given on connectivivty of ui -api -mysql 
+http is not routing to https....it was not the problem
+
+in previous practice - the applications were simple ui api mysql were not connected
+i allowed userso that he can connect mysql server remotely.....but was not able to connect through mysql-workbench .....with key it was possible as per you.
+resolved so many database problems.
+
+i have a confidence that whatever senior devops can do.....those things i also can do.
+
+was stuck in only database and dockerfile problems....other i am able to manage 
+
+if application is not environment specific then whose fault it is.
+
+
+DATE: 02.jan.2023 - Monday ######################################################################################################################
+
+
+
+modifier_fixes/v2.0.101 is not in api also but modifier-fixes/v2.0.101 is there....so you must have used modifier-fixes/v2.0.101 ?
+
+modifier_fixes/v2.0.101     modifier_fixes/v2.0.10
+
+SmartWait_Fixes   smartWAIT-fixes     deleting this branches.
+
+modifier_fixes/v2.0.101
+smartwait_fixes/v2.0.101
+
+
+From gitlab.vivantcorp.com:milagro/milagro-ui
+ ! [new branch]          smartwait_fixes/v2.0.101 -> origin/smartwait_fixes/v2.0.101  (unable to update local ref)
+https://stackoverflow.com/questions/10068640/git-error-on-git-pull-unable-to-update-local-ref
+
+smartwait_fixes/v2.0.101
+SmartWait_Fixes
+we have this two branches in milagro ui . because this has almost same prefixes giving error in git fetch --all.
+
+
+landscape-filter/sprint011023   (ui only ) 
+multi-select-filter/sprint011023
+client/sprint011023      (ui only ) 
+global-search/sprint011023
+color-code/sprint011023
+export-entire-report/sprint011023
+
+
+
+
+** cicd is done. issue in 34.227.76.200
+** installed docker using official documentation of docker for ubuntu.
+
+Retrospective call.
+
+
+upstream api_servers {
+
+        server 54.236.76.229:3000;
+        server 54.204.162.162:3000;
+
+
+        
+DATE: 03.jan.2023 - Tuesday ###########################################################################################################################################
+
+
+Todays update- 03.jan.2023
+- auto deployment is happening on 54.204.162.162
+#####Stuck on the issue with 34.227.76.200. Need help on this.
+- cicd pipeline is correct.
+
+
+
+DATE: 18.jan.2023 - Wednesday #####################################################################################################################################################
+
+
+
+task-update 18.jan.2023
+1.passing variable in dockerfile for qa env :done
+it was told that http should routed to https ,but that was not the issue.
+
+Error response from daemon: no build stage in current context
+
+Task update 18.jan.2023
+- passing variable in dockerfile for qa env 
+- http should automatically routed to https for qaui.utiliko.xyz
+
+passing variable in dockerfile for qa env
+https://www.geeksforgeeks.org/docker-arg-instruction/
+https://blog.bitsrc.io/how-to-pass-environment-info-during-docker-builds-1f7c5566dd0e
+
+http should automatically routed to https for qaui.utiliko.xyz
+https://security.stackexchange.com/questions/166204/does-http-redirect-to-https-automatically
+
+
+
+Milagro : for both ui and api
+Milagro
+qa-release/sprint310123 from qa
+snippet-n-template/mig310123 from qa-release/sprint310123
+git-issues/mig310123 under qa-release/sprint310123
+
+
+Utiliko
+qa-release/sprint230123 from qa
+git-issues/sprint230123 under qa-release/sprint230123
+contributer-changes/sprint230123 created  from  qa-release/sprint230123
+
+3.34.43.233  -lb 172.26.7.219
+
+qa
+43.201.62.110
+3.39.227.194
+
+dev
+13.209.11.52
+13.125.86.204
+
+
+
+return 301 https://$server_name$request_uri;
+
+
+
+DATE: 19.jan.2023 - Thursday #########################################################################################################################################################
+
+
+
+Task-update 19.jan.2023
+- master-master replication of database: done
+- creating user which can access database from workbench from any ip address: WIP
+
+
+Samrat Create sprint branch from V101 for importV2/v2.0.101 
+
+utiliko UI
+
+surveyy/sprint230123 from qa-release/sprint230123
+
+importV2/v2.0.101 from qa-release/v2.0.101    both ui and api
+
+both ui & api meetingss/sprint230123
+
+
+
+
+- When trying to login on qaui.utiliko.xyz . calling api localhost:3000 
+- Not given the clarity between ui api and mysql communication.   thats why reworking mysql replication.
+
+Master-master replication
+https://phoenixnap.com/kb/mysql-remote-connection
+https://www.digitalocean.com/community/tutorials/how-to-allow-remote-access-to-mysql
+https://linuxize.com/post/mysql-remote-access/
+
+GRANT ALL ON *.* TO 'utilikoqa'@'%';
+
+create user 'utilikoqa'@'%' identified by 'utiliko@123'; 
+grant replication slave on *.* to 'utilikoqa'@'%'; 
+
+create database tenant_utiliko; 
+
+slave stop; 
+CHANGE MASTER TO MASTER_HOST = '43.201.62.110', MASTER_USER = 'utilikoqa', MASTER_PASSWORD = 'utiliko@123', MASTER_LOG_FILE = 'mysql-bin.000100', MASTER_LOG_POS = 2644; 
+slave start;
+
+slave stop; 
+CHANGE MASTER TO MASTER_HOST = '3.39.227.194', MASTER_USER = 'utilikoqa', MASTER_PASSWORD = 'utiliko@123', MASTER_LOG_FILE = 'mysql-bin.000130', MASTER_LOG_POS = 1564; 
+slave start;
+
+mysql -u utilikoqa -p tenant_utiliko< tenant_utiliko.sql
+
+ GRANT ALL PRIVILEGES ON tenant_utiliko.* TO 'utilikoqa'@'%';
+ 
+ 
+ 43.201.62.110
+ 3.39.227.194
+ mysql user: utilikoqa
+ mysql pass: utiliko@123
+ 
+ CREATE USER 'dev'@'localhost' IDENTIFIED BY qwe';
+ 
+ 
+ 
+ DATE: 20.jan.2023 - Friday #########################################################################################################################################################
+ 
+merged surveyy/sprint230123 UI into qa reelase sprint
+Create branch ssGitIssues/sprint230123 on api only from sprint230123 on utiliko.ui branch is already created
+
+utiliko-ui
+merged surveyy/sprint230123 into qa reelase sprint
+
+utiliko-api
+
+
+
+
+
+- creating user in database to access from mysql workbench
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'qwe';
+CREATE USER 'dev'@'localhost' IDENTIFIED BY 'qwe';
+GRANT ALL PRIVILEGES ON . TO 'dev'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+GRANT ALL ON tenant_utiliko.* TO 'utilikoqa@'%' IDENTIFIED BY 'utiliko@123';
+GRANT ALL ON *.* TO 'root' IDENTIFIED BY 'root@123';
+
+i have almost done everything to connect it from workbench. dont think any configuration or command is remaining.
+
+https://arctype.com/blog/mysql-ssl/#:~:text=Enable%20SSL%20Connections%20on%20MySQL,-To%20enable%20the&text=Now%2C%20connect%20to%20the%20MySQL,have_ssl%20variables%20are%20now%20enabled.
+
+
+require_secure_transport = ON
+
+CREATE USER 'vivant'@'%' IDENTIFIED BY 'vivant@123' REQUIRE SSL;
+GRANT ALL PRIVILEGES ON tenant_utiliko.* TO 'vivant'@'%' WITH GRANT OPTION;
+
+https://aws.amazon.com/premiumsupport/knowledge-center/rds-mysql-ssh-workbench-connect-ec2/
+
+- completed every task on time .
+- SOP in the queue but waiting to resolve user creation for workbench 
+- instructed to check what is ssl in mysql configuration but dont know whether it will affect remote access or not.
+- asked to check docker logger but not specified the requirement.
+- devops is multidisciplinary in nature.
+
+cicd gets error whenever it get runs.
+ 
+- you have to keep eye on docker cicd gitlab ci branching master-master replication.
+- should be having sop of user creation to access it from mysql workbench. 
+
+
+3.39.227.194
+ssh-user: ubuntu
+ssh-pass: ubuntu@123
+ssh-key: cicdutiliko.pem
+database-user: vivant   
+database-pass: vivant@123
+
+
+ DATE: 22.jan.2023 - Sunday #########################################################################################################################################################
+
+- In /src/environments/environment.qa.ts what is app domain ?  here is utiliko.xyz
+- in /src/environments/environment.dev.ts  in this app domain is koders.xyz
+- In /src/environments/environment.ts BASE_URL is http://localhost:3000/
+
+- i need understand the working of application. like how apis are calling. if it should not be localhost:3000 then what it should be, because
+it is already mentioned in the application code.i
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 23.jan to 27.jan
+
+- SOP of master-master replication
+- 
+
+ DATE: 23.jan.2023 - Monday :SL #########################################################################################################################################################
+
+ DATE: 24.jan.2023 - Tuesday #########################################################################################################################################################
+
+tasks
+1. fixing wrong api call of qaui.utiliko.xyz
+
+dev dockerfile
+FROM node:12-alpine AS build
+#FROM node:14.20.0-alpine3.15 AS build 
+RUN mkdir /app
+WORKDIR /app
+#RUN apk add --update python make g++\
+#   && rm -rf /var/cache/apk/*
+COPY package.json ./
+COPY . .
+#COPY . /usr/src/app/
+RUN apk add --no-cache git
+RUN git --version
+RUN npm i --legacy-peer-deps 
+#--global node-gyp
+RUN npm run build
+#COPY . /app/
+#COPY . .
+#RUN node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --configuration=dev
+FROM nginx:alpine
+COPY --from=build /app/dist/ /var/www/
+#COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf
+#COPY ./web_conf/default.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/ /usr/share/nginx/html
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
+
+ DATE: 25.jan.2023 - Wednesday #########################################################################################################################################################
+
+grant all privileges on *.* to 'vivant'@'%' with grant option;
+
+ALTER USER  'root' IDENTIFIED BY 'root@123';
+
+
+ARG ENV_TYPE=qa
+ENV ENV_TYPE=${ENV_TYPE}
+
+ DATE: 27.jan.2023 - Friday #########################################################################################################################################################
+
+task-update 27.jan.2023
+fixing npm command error on qa-cicd-test branch :WIP
+
+task-1
+fixing npm command error
+The command '/bin/sh -c npm run build --configuration=qa' returned a non-zero code: 1
+
+https://answers.netlify.com/t/deploy-failed-today-build-was-terminated-build-script-returned-non-zero-exit-code-1/64450/2
+https://dev.to/nonbeing/comment/c01n
+ 
+ Week: 30.jan - 3.feb 
+
+ DATE: 30.jan.2023 - Monday #########################################################################################################################################################
+
+task-update 30jan2023
+- SOP for master-master replication: complete
+- cicd script for milagro ui and api: complete
+
+* include the name of cloud in tags of gitlab-runner.
+* 
+
+Milagro:
+qa-release/sprint230223 from qa-release/v2.0.102
+migrationss/expected_revenue/sprint230223 from qa-release/sprint230223
+
+ DATE: 31.jan.2023 - Tuesday #########################################################################################################################################################
+
+Task-update 31.jan.2023
+- Milagro-qa-autodeployment: WIP
+- 
+- SOP for qa-cicd autodeployment.
+- what is port number for milagro api ?
+- milagro-ui = 4000
+- milagro-api = 3000
+* cdapi.milagro.ca
+  cdui.milagro.ca
+
+milagro api and utiliko api have same port number.
+
+3.39.227.194  - utiliko-ui-qa-1
+43.201.62.110 - utiliko-ui-qa-2
+
+default.conf and Dockerfile is not there in qa-cicd-test.
+
+
+
+
+
+
+

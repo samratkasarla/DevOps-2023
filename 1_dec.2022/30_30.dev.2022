@@ -1,0 +1,215 @@
+========================================================
+30.dec.2022 - Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+
+
+IMP_INFO
+SjeTQNTo-9y7zusyKpJX
+
+qa-release/sprint011023
+ssGitIssues/sprint011023
+
+automation-testing/sprint011023 ( UI alone )
+tinyEditor/sprint011023 ( UI alone )
+meetingss/sprint011023 
+git-issues/sprint011023
+balanceSheet/sprint011023
+pay-bill/sprint011023
+
+qa-release/sprint011022
+automation-testing/sprint011022 ( UI alone )
+tinyEditor/sprint011022 ( UI alone )
+meetingss/sprint011022 
+git-issues/sprint011022
+balanceSheet/sprint011022
+pay-bill/sprint011022
+
+https://www.freecodecamp.org/news/how-to-delete-a-git-branch-both-locally-and-remotely/
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
+https://www.freecodecamp.org/news/how-to-rename-a-local-or-remote-branch-in-git/
+
+
+
+
+image: "docker:19.03.15"
+services:
+  - docker:19.03.15-dind
+.only-dev:
+  only:
+   - dev
+
+stages:
+  - build
+  - deploys1
+  - deploys2
+build:
+  extends: .only-dev            
+  stage: build                  
+  timeout: 3 hours
+  tags:
+    - utiliko-ui-2
+  script:
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+ #    - echo "$CI_REGISTRY_USER"
+ #    - echo "$CI_REGISTRY_PASSWORD"
+
+deploys1:
+  extends: .only-dev
+  stage: deploys1
+  tags:
+    - utiliko-ui-1
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 3000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+deploys2:
+  extends: .only-dev
+  stage: deploys2
+  tags:
+    - utiliko-ui-2
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    #- docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 3000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+
+CI_REGISTRY_URL   milagro-dev-rpm.milagro.dev
+CI_REGISTRY_USER   vivant_user
+CI_REGISTRY_PASSWORD  vivant@123
+CONTAINER_IMAGE  utiliko-api
+ENV_TYPE         dev
+CI_PIPELINE_ID
+
+CI_REGISTRY_URL: milagro-dev-rpm.milagro.dev
+CI_REGISTRY_PASSWORD: vivant@123
+CI_REGISTRY_USER: vivant_user
+
+
+
+events {
+
+}
+
+http {
+    upstream ui_servers {
+
+        server  34.227.76.200:9000;
+        server  54.204.162.162:9000;
+    }
+    upstream api_servers {
+
+        server 34.227.76.200:3000;
+        server 54.204.162.162:3000;
+    }
+
+
+
+    server {
+
+        listen 80;
+        server_name cdui.utiliko.xyz;
+       # return 200 "Message from cdui 3.36.93.16\n";
+
+        location / {
+            proxy_pass http://ui_servers;
+
+
+        }
+    }
+
+    server {
+        listen 80;
+        server_name cdapi.utiliko.xyz;
+        #return 200 "Message from cdapi 3.36.93.16\n";
+
+        location / {
+            proxy_pass http://api_servers;
+        }
+    }
+}
+
+
+
+qa-release/sprint011023
+
+automation-testing/sprint011023 ( UI alone )
+tinyEditor/sprint011023 ( UI alone )
+meetingss/sprint011023 
+git-issues/sprint011023
+balanceSheet/sprint011023
+pay-bill/sprint011023
+Samrat Please update these branches with qa code
+
+
+
+
+
+You're performing an operation over default zone ('public'),
+but your connections/interfaces are in zone 'docker' (see --get-active-zones)
+You most likely need to use --zone=docker option.
+
+success
+
+
+api
+git-issue/v4.3.6
+meetingss/v4.3.6
+tasks/v4.3.6
+leave-mgnt/v4.3.6
+workHistory/v4.3.6
+ssGitIssue/v4.3.6
+ssGitIssue_1/v4.3.6
+calendar/v4.3.6
+chartOfAaccounts/v4.3.6
+writeCheckss/v4.3.6
+ssGitIssue-2/v4.3.6
+pbx_changes/v4.3.6
+slaReport/v4.3.6
+
+ui
+git-issue/v4.3.6
+ssGitIssue_1/v4.3.6
+meetingss/v4.3.6
+tasks/v4.3.6
+leave-mgnt/v4.3.6
+workHistory/v4.3.6
+ssGitIssue/v4.3.6
+automation-testing/v4.3.6
+calendar/v4.3.6
+chartOfAaccounts/v4.3.6
+writeCheckss/v4.3.6
+tinyEditorForUiOnly/v4.3.6
+pbx_changes/v4.3.6
+slaReport/v4.3.6
+
+
+Q. set upstream option in git
+
+
+Task-autodeployment 30.dec.2022  -WIP
+- Pipeline  is running successfully for both ui and api application (only on server 54.204.162.162) 
+- applications can be accesed from load balancer with domain cdui.utiliko.xyz and cdapi.utiliko.xyz
+
+
+
+
+
+

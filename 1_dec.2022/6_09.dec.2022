@@ -1,0 +1,49 @@
+========================================================
+09.dec.2022 -Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+https://docs.google.com/spreadsheets/d/1UMCIu4nyJI_dWycPNkdQhkBXAOMhl3a0kkDuvluLmnM/edit#gid=0   ....utiliko branching
+
+
+Samrat Please create qa-release/v4.3.6, git-issue/v4.3.5 from qa-release/v4.3.5 for both UI and API
+
+
+## Master-master replication
+## nginx as reverse proxy
+## nginx as load balancer
+## nginx handbook.
+## documentation of nginx as reverse proxy and load balancer.
+## running angular and node app
+## problem in installing angularcli because of node version.....so there i come to know latest version of node and npm 
+can be installed with nvm package manager.
+## set gitlab runner with docker.
+## 
+
+
+** #while sleep 0.5; do curl 3.36.93.16; done
+
+** Master-master replication of mysql, ssl certificate, 443, nginx as reverse proxy, nginx as load balancer. 
+
+** VPN, 
+
+** https://www.quora.com/How-do-I-access-Indian-websites-in-the-US
+
+** https://www.browserstack.com/guide/why-website-loading-slow
+
+** https://www.browserstack.com/guide/why-website-loading-slow .....reasons website can be slow.
+
+** unit testing,
+
+** https://docs.gitlab.com/ee/ci/pipelines/pipeline_architectures.html#basic-pipelines ..gitlab cicd
+
+** https://datawookie.dev/blog/2021/03/install-gitlab-runner-with-docker/  ...installing git lab runner with container.
+
+** https://www.tutorialspoint.com/gitlab/gitlab_create_branch.htm ....creating a branch
+
+** https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html
+
+tag: samrat
+description: samrat first runner
+
+docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:v14.7.0
+
+** tags will decide on which runner job will be running .

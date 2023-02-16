@@ -1,0 +1,115 @@
+** we have three servers server-L =>3.36.93.16 , server-A =>34.227.76.200 and server-b =>54.204.162.162
+** server-L is load balancer
+** server-A and server-b will host the application.
+
+** path of nginx configuration file will be /etc/nginx/nginx.conf
+
+configuration of nginx.conf in server-L will be 
+===============================================
+
+events {
+
+}
+
+http {
+    upstream ui_servers {
+
+        server 34.227.76.200;
+        server 54.204.162.162;
+    }
+    upstream api_servers {
+
+        server 34.227.76.200;
+        server 54.204.162.162;
+    }
+
+
+
+    server {
+
+        listen 80;
+        server_name cdui.utiliko.xyz;
+       
+
+        location / {
+            proxy_pass http://ui_servers/ui;
+
+        }
+    }
+
+    server {
+        listen 80;
+        server_name cdapi.utiliko.xyz;
+        
+
+        location / {
+            proxy_pass http://api_servers/api;
+        }
+    }
+
+}
+
+
+
+configuration of server-A will be as follows
+============================================
+
+events {
+
+}
+
+http {
+    include /etc/nginx/mime.types;
+
+
+    server {
+
+        listen 80;
+        server_name 34.227.76.200;
+        location = /ui {
+            return 200 "cdui from 34.227.76.200\n";
+        }
+        location = /api {
+            return 200 "cdapi from 34.227.76.200\n";
+        }
+
+
+   }
+
+
+
+}
+
+
+nginx configuration  of server-B 
+================================
+
+events {
+
+}
+
+http {
+    include /etc/nginx/mime.types;
+
+
+    server {
+
+        listen 80;
+        server_name 34.227.76.200;
+        location = /ui {
+            return 200 "cdui from 34.227.76.200\n";
+        }
+        location = /api {
+            return 200 "cdapi from 34.227.76.200\n";
+        }
+
+
+   }
+
+
+
+}
+
+
+
+

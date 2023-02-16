@@ -1,0 +1,26 @@
+========================================================
+22.dec.2022 - Thursday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+* meetingss/v4.3.6   merged for ui-only      ----updated
+* git-issue/v4.3.6   merged for ui-only      --updated 
+* leave-mgnt/v4.3.6                          ---updated
+* tasks/v4.3.6                                  --updated
+automation-testing/v4.3.6    this branch is not in api    --updated
+* pbx_changes/v4.3.6    ---updated
+tinyEditorForUiOnly/v4.3.6   --updated  this branch is not in api
+* writeCheckss/v4.3.6  --updated
+
+
+utiliko deployment with gitlab ci
+** used default method of certificate installation....by that /etc/nginx/site-enabled/default 
+** https://en.wikipedia.org/wiki/Wildcard_DNS_record
+
+** Check and remove all unused containers (both dangling and unreferenced) including volumes.
+-- got error while installing gitlap runner in the server.
+
+docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+
+** https://docs.gitlab.com/runner/install/docker.html ..used this article to run gitlab runner
+
+** 

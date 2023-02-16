@@ -1,0 +1,68 @@
+========================================================
+09.jan.2023 - Monday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Task-update 09.jan.2023 -WIP
+- Merged balanceSheet/sprint011023 -> qa-release/sprint011023 
+
+- checked docker logs ,there are errors. It seems it is because of dockerfile that i have used in my demo angular project.
+- It is a multistage dockerfile. Working on Errors due Dockerfile.
+
+
+
+
+he is saying that code in landscape-filter/sprint011023
+should be in git-issues/sprint011023
+
+
+balanceSheet/sprint011023 -> qa-release/sprint011023
+
+
+@Samrat I did the below updates in milagro git
+
+qa-release/v2.0.101 updated with release/v2.0.99, qa code
+qa-release/v2.0.102 created by qa
+
+docker info --format '{{.LoggingDriver}}'
+docker exec -it 254fc95ce92a  sh -c "echo a && echo b"
+
+json-file
+
+nodejs
+It is runtime environment.
+
+integration of selenium with gitlab ci
+https://medium.com/dolap-tech/how-to-run-selenium-automation-tests-on-gitlab-ci-cd-github-actions-bd743142ad4c
+https://docs.docker.com/config/containers/logging/configure/
+
+According to the same origin policy, the web browser will allow JavaScript codes to access elements on the web page, if and only if both the JavaScript and web page being tested are hosted from the same domain.
+
+https://medium.com/edureka/selenium-tutorial-77879a1d9af1
+
+https://medium.com/capital-one-tech/multi-stage-builds-and-dockerfile-b5866d9e2f84
+
+
+
+Branch creation:
+release branch - kartik / you will create from previous release branch
+qa - default branch for qa server, to QA person test ( kartik will update qa branch with release branch code )
+qa-release/sprint - Once above step done, You will create this branch from qa
+then
+sprint branches - you will create these from qa-release/sprint as per BA, Lead instruction
+then
+task branches - developer's will create this from respective sprint branches, once you done with above steps
+
+MR creation
+developer will raise MR to sprint branch >>>>>>> Lead will merge
+developer will raise MR to dev >>>>>>>>>>>>>>Lead will merge
+then auto-deployment will happen, so developer, BA will do test in dev environment
+once all worked fine,  then BA/Lead will come to you
+
+devops will raise MR to sprint branch to qa-reelase >>>>>>>>> devops will merge
+
+then lead will send this sprint branch to BA ( just for record )
+
+then qa-release/sprint branch will be deployed by kartik in qa server
+
+BA / Lead will send list of release note based on sprint branch merge to QA
+QA will do test in qa server

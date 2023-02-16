@@ -1,0 +1,112 @@
+========================================================
+04.jan.2023 - Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+task-update 04.jan.2023
+- cicd is working for both servers 54.204.162.162 and 54.236.76.229.
+- containers running in both server and can be accessed from loadbalancers CLI.
+- merged git-issues/sprint011023 ,pay-bill/sprint011023, tinyEditor/sprint011023 to qa-release/sprint011023
+
+@Samrat please merge these  into qa-release/sprint011023 sprint
+
+git-issues/sprint011023 ,pay-bill/sprint011023, tinyEditor/sprint011023
+pay-bill/sprint011023
+tinyEditor/sprint011023   --this branch is only in ui 
+
+git-issues/sprint011023 ,pay-bill/sprint011023, tinyEditor/sprint011023
+pay-bill/sprint011023
+tinyEditor/sprint011023   --this branch is only in ui 
+
+https://medium.com/devops-with-valentine/top-10-most-common-errors-in-gitlab-ci-ce5d206e8c03
+
+fatal: unable to access 'https://gitlab.vivantcorp.com/samrat/my-first-pipeline.git/': Could not resolve host: gitlab.vivantcorp.com
+
+
+apt-get install ca-certificates curl gnupg lsb-release
+
+
+events {
+
+}
+
+http {
+    include /etc/nginx/mime.types;
+
+ #   server_name 34.227.76.200;
+#    root /var/www/html/demo-app;
+
+
+
+     server {
+         listen 80;
+         listen [::]:80;
+         root /var/www/html/newangapp;
+
+index index.html index.htm index.nginx-debian.html;
+
+
+#        server_name  *.milagro.ca;
+        try_files $uri $uri/ /index.php?$args;
+                if (!-e $request_filename) {
+
+                        rewrite ^(.*)$ /index.html;
+                }
+         }
+
+      server {
+        listen 3000;
+       #server_name 34.227.76.200;
+
+      root /var/www/html/demo-app;
+      index index.html index.htm index.nginx-debian.html;
+      try_files $uri $uri/ /index.php?$args;
+      if (!-e $request_filename) {
+      rewrite ^(.*)$ /index.html;
+      }
+
+      }
+}
+        # location = /newangapp {
+         #       return 307 /index.html;
+       # }
+
+
+ #   rewrite /index_page /index.html;
+      #   try_files /index.html;
+
+
+       #  location  /newangapp {
+
+            #proxy_pass http://ui_servers;
+        #    return 200 "cdui from 34.227.76.200\n";
+
+       # }
+        #location = /api {
+            #return 307 /index.html;
+         #   return 200 "cdapi from 34.227.76.200\n";
+        #}
+
+
+
+        #return 200 "Message from cdui 34.227.76.200\n";
+        #location / {
+         #   proxy_pass http://localhost:3100;
+        #}
+
+
+
+   # server {
+    #    listen 80;
+     #   server_name 34.227.76.200;
+        #return 200 "Message from cdapi 34.227.76.200\n";
+      #  location = /api {
+       #     return 200 "cdapi from 34.227.76.200\n";
+       # }
+
+       # root /var/www/html/demo-app;
+    # }
+
+
+
+
+

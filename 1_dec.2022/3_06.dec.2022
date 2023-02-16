@@ -1,0 +1,127 @@
+========================================================
+06.dec.2022 -tuesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+** https://medium.com/geekculture/how-to-install-node-js-by-nvm-61addf4ab1ba installing node with nvm
+** https://nodejs.org/en/docs/guides/nodejs-docker-webapp/ 
+** https://angular.io/guide/setup-local installing angular-cli
+** https://wkrzywiec.medium.com/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8 dockerizing angular app.
+** https://www.freecodecamp.org/news/run-multiple-containers-with-docker-compose/ ...docker compose
+** https://www.tutorialspoint.com/docker/docker_compose.htm ..docker compose
+** ps , ps -elf, sed, awk, cut, df -h, fdisk, free, hostnamectl, cat /etc/os-release.
+** docker exec, docker inspect, docker logs, docker-compose up --detach.
+** gitlab, cicd, branching, git checkout -b main, git branch, git remote -v, git init, git rebase, git merge,
+** https://dev.to/aduranil/10-docker-compose-and-docker-commands-that-are-useful-for-active-development-22f9 ...important docker commands.
+** monorepo, microservices, deployment with docker-compose...monolithic or microservices.
+** https://sksonudas.medium.com/build-and-deploy-microservices-using-docker-compose-file-647dcf8e14
+** Hard links and softlinks
+
+events {
+
+}
+
+http {
+    upstream ui_servers {
+        server 54.204.162.162;
+    }
+     upstream api_servers {
+        server 34.227.76.200;
+    }
+
+
+
+    server {
+
+        listen 80;
+        server_name cdui.utiliko.xyz;
+
+        location / {
+            proxy_pass http://ui_servers;
+        }
+    }
+
+    server {
+        listen 80;
+        server_name cdapi.utiliko.xyz;
+
+        location / {
+            proxy_pass http://api_servers;
+        }
+    }
+
+}
+
+Highlights
+** Dockerized node and angular app....running on 8080 and 8081 port respectively.
+
+** https://medium.com/geekculture/how-to-install-node-js-by-nvm-61addf4ab1ba installing node with nvm
+** https://nodejs.org/en/docs/guides/nodejs-docker-webapp/ 
+** https://angular.io/guide/setup-local installing angular-cli
+** https://wkrzywiec.medium.com/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8 dockerizing angular app.
+** https://www.freecodecamp.org/news/run-multiple-containers-with-docker-compose/ ...docker compose
+** https://www.tutorialspoint.com/docker/docker_compose.htm ..docker compose
+** ps , ps -elf, sed, awk, cut, df -h, fdisk, free, hostnamectl, cat /etc/os-release.
+** docker exec, docker inspect, docker logs, docker-compose up --detach.
+** gitlab, cicd, branching, git checkout -b main, git branch, git remote -v, git init, git rebase, git merge,
+** https://dev.to/aduranil/10-docker-compose-and-docker-commands-that-are-useful-for-active-development-22f9 ...important docker commands.
+** monorepo, microservices, deployment with docker-compose...monolithic or microservices.
+** https://sksonudas.medium.com/build-and-deploy-microservices-using-docker-compose-file-647dcf8e14
+** Hard links and softlinks
+
+Imp terms
+** service dependencies, databases, queues, caches, web service, APIs.
+
+Shell scripting:
+** array, variables ,echo $$, echo $*, 
+**
+
+Important docker commands 
+** docker-compose run --service-ports web.
+** docker exec -it <container name> bash
+** docker-compose build
+** docker-compose up
+** docker-compose down
+** docker system prune
+
+Kubernetes:
+Terraform:
+Docker:
+docker-compose 
+Jenkins:
+Gitlab Cicd
+Nginx
+Apache tomcat
+Python
+Java
+Nodejs
+Angular
+Aws ...iam vpc s3 cloudwatch route53 cdn 
+Wordpress
+GCP
+AZURE
+AZURE pipeline
+
+
+version: 2
+services:
+    databases:
+      image: mysql
+      ports:
+      - "3306:3306"
+      environment:
+      - MYSQL_ROOT_PASSWORD=password 
+      - MYSQL_USER=user 
+      - MYSQL_PASSWORD=password 
+      - MYSQL_DATABASE=demodb
+      web:
+        image: nginx
+
+https://docs.google.com/spreadsheets/d/1HaejnJAhXnZDxXZz9uLMM3V0mkfvpusMgK75WXyaoC8/edit#gid=2031547816
+
+
+
+
+      
+
+
+

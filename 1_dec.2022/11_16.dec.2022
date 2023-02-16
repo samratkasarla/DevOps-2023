@@ -1,0 +1,10 @@
+========================================================
+16.dec.2022 -Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+** facing issue...loadbalancer is perfect when use messages but....not getting output when application url is used.
+
+
+task-update 16.dec.2022
+- loadbalancing is fine. application accessible from hosts ip address. but through loadbalancer not giving expected out.
+Requests are going on right place.

@@ -1,0 +1,53 @@
+** To configure nginx as a load balancer, we will need two simple application nodejs and angular running.
+** In this case we are having nodejs application and angular app running on port 8080 and 4200 respectively.
+
+** nodejs application is running on container. 
+** To run the angular application, go to cd into /root/angular and RUN #ng serve --open, angular app will
+start running on port 4200.
+
+** to verify this we can run following commands on the terminal.
+#curl localhost:8080
+#curl localhost:4200
+
+** now open the configuration file of nginx with vim editor and then enter following content into it.
+
+#vim /etc/nginx/nginx.conf
+
+events {
+
+}
+
+http {
+
+    upstream backend_servers {
+        server localhost:8080;
+        server localhost:4200;
+
+    }
+
+    server {
+
+        listen 80;
+        server_name node.test;
+
+        location / {
+            proxy_pass http://backend_servers;
+        }
+    }
+}
+
+** in this configuration "upstream backend_servers" this block is the list of backend servers where nginx will 
+balance the load.
+
+** once configuration is done , save and exit from the vim editor and use following commands.
+
+#nginx -t
+=> the above command is for checking whether nginx configuration file is valid or not.
+
+#nginx -s reload
+=> to restart the nginx
+
+Todays -update 05.jan.2023
+- Applied ssl on domain
+- Made update on utiliko dev deployment docs
+- Given KT to Surya about Devops responsibility

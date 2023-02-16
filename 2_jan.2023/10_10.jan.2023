@@ -1,0 +1,44 @@
+========================================================
+10.jan.2023 - Tuesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Task-update 10.jan.2023
+- studied docker logging
+- found method to see real-time logging with docker 
+
+
+
+Blogs
+- Master-master replication with server.
+- 
+
+
+https://medium.com/geekculture/angular-a-beginners-guide-f8cd9ee7325
+https://medium.com/geekculture/angular-a-beginners-guide-f8cd9ee7325
+https://medium.com/interleap/docker-volumes-and-logging-a839011950f7
+https://medium.com/@purplejen/installing-the-mysql-server-and-setting-up-mysql-secure-connection-c782425b1c66
+https://medium.com/@tobidsn/secure-mysql-installation-b30b8531a5d
+
+#stage 1
+FROM node:latest as node
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build --prod
+#stage 2
+FROM nginx:alpine
+COPY --from=node /app/dist/cicd-test-angular /usr/share/nginx/html
+ENTRYPOINT node index.html
+
+utiliko-qa-autodeployment
+
+qa- autodeployment
+devOps....security policies, 
+
+
+ssh-username password and pemfile should connect with mysql
+qa
+
+
+articles on new concepts.
+

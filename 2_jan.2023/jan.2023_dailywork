@@ -1,0 +1,16 @@
+DATE: 19.jan.2023 ####################################################################################################################################################################
+
+- No proper requirement info given on replication like which data should be replicated, what name it should have.
+- No info provided on communication between ui api and mysql.
+- thats why replication task extended.
+
+ DATE: 20.jan.2023 - Friday #########################################################################################################################################################
+
+done
+- created user which can access access database from workbench. 
+- SOP of user creation in database given by karti is followed. But with that we cant access database from remote.
+
+task-update 24.jan.2023
+1. fixing wrong api call of qaui.utiliko.xyz :WIP
+
+

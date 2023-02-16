@@ -1,0 +1,174 @@
+========================================================
+15.dec.2022 -Thursday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+created branches
+modifier-fixes/v2.0.101
+smartwait_fixes/v2.0.101
+
+researched about pipeline error.
+
+** merge this branches to qa-release/v4.3.6
+ssGitIssue-2/v4.3.6
+workHistory/v4.3.6
+ssGitIssue/v4.3.6
+meetingss/v4.3.6
+----done for ui
+----done for api 
+
+**adding branches in utiliko
+ui
+calendar/v4.3.6
+chartOfAaccounts/v4.3.6
+writeCheckss/v4.3.6
+tinyEditorForUiOnly/v4.3.6
+
+api
+calendar/v4.3.6
+chartOfAaccounts/v4.3.6
+writeCheckss/v4.3.6
+
+
+
+
+** to-do ..documentation of loadbalancing with domain.
+
+** load balancer is working as expected.
+
+** CREATE TABLE Persons (PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255));
+
+** INSERT INTO persons (PersonID, City) VALUES (1, Pune);
+
+** DELETE FROM Persons WHERE PersonID=3;
+
+** UPDATE Persons SET LastName = 'kumar' WHERE PersonID = 1;
+
+modifier-fixes/v2.0.101
+smartwait_fixes/v2.0.101
+
+** https://docs.gitlab.com/ee/ci/variables/predefined_variables.html 
+
+**  docker system prune -a --volumes -f
+** 
+
+events {
+
+}
+
+http {
+    upstream ui_servers {
+
+        server 34.227.76.200;
+        server 54.204.162.162;
+    }
+    upstream api_servers {
+
+        server 34.227.76.200;
+        server 54.204.162.162;
+    }
+
+
+
+    server {
+
+        listen 80;
+        server_name cdui.utiliko.xyz;
+       # return 200 "Message from cdui 3.36.93.16\n";
+
+        location / {
+            proxy_pass http://ui_servers/ui;
+
+        }
+    }
+
+    server {
+        listen 80;
+        server_name cdapi.utiliko.xyz;
+        #return 200 "Message from cdapi 3.36.93.16\n";
+
+        location / {
+            proxy_pass http://api_servers/api;
+        }
+    }
+
+}
+
+
+
+
+events {
+
+}
+
+http {
+    include /etc/nginx/mime.types;
+    upstream ui_servers {
+
+        server localhost:3100;
+    }
+
+
+    server {
+
+        listen 80;
+        server_name 34.227.76.200;
+        location = /ui {
+            proxy_pass http://ui_servers;
+        }
+        location = /api {
+            return 200 "cdapi from 34.227.76.200\n";
+        }
+
+
+
+        #return 200 "Message from cdui 34.227.76.200\n";
+        #location / {
+         #   proxy_pass http://localhost:3100;
+        #}
+
+   }
+
+   # server {
+    #    listen 80;
+     #   server_name 34.227.76.200;
+        #return 200 "Message from cdapi 34.227.76.200\n";
+      #  location = /api {
+       #     return 200 "cdapi from 34.227.76.200\n";
+       # }
+
+       # root /var/www/html/demo-app;
+    # }
+
+
+}
+
+task-1-loadbalancer
+-Load balancer is working as per requirement.
+-documentation is pending
+
+** git push origin --delete remoteBranchName
+
+events {
+
+}
+
+http {
+
+    include /etc/nginx/mime.types;
+
+    server {
+
+        listen 80;
+        server_name nginx-handbook.test;
+
+        root /srv/nginx-handbook-projects/static-demo;
+
+        location = /index_page {
+                return 307 /index.html;
+        }
+
+        location = /about_page {
+                return 307 /about.html;
+        }
+    }
+}
+

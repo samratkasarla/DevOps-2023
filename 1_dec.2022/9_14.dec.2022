@@ -1,0 +1,49 @@
+========================================================
+14.dec.2022 -Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+imp_info
+-      3.36.93.16        172.26.15.58       
+-      54.204.162.162    172.26.2.244       
+-      34.227.76.200     172.26.12.134 
+
+** to-do nginx as load balancer.
+
+** types of users in utiliko
+** https://medium.com/free-code-camp/what-exactly-is-node-js-ae36e97449f5
+
+** git remote prune origin
+** https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
+
+** types load balancing are ....ip_hash, least connection, hash, round robin.
+** https://medium.com/tech-it-out/high-performance-load-balancing-with-nginx-b3a31acd88a3
+---- unix sockets.
+** https://www.geeksforgeeks.org/how-to-create-load-balancing-servers-using-node-js/
+** https://www.section.io/engineering-education/nginx-reverse-proxy/
+
+** deployment of multiple apps in multiple servers ...nat gate way
+
+** Private subnet, public subnet, Nat-gateway
+
+** internal and external ports
+
+** https://stevessmarthomeguide.com/understanding-port-forwarding/
+
+** https://www.freecodecamp.org/news/the-nginx-handbook/#how-to-use-nginx-as-a-reverse-proxy
+
+
+
+
+
+
+nginx --
+gitlab ...for remote repo
+gitlab cicd  .....for autodeployment.
+master-master replication of mysql 
+
+node app as ui   9000
+angular app for api   3000
+
+docker ----good knowledge  
+
+

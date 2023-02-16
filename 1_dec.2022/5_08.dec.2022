@@ -1,0 +1,44 @@
+========================================================
+08.dec.2022 -Thursday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+############### highlights ###############
+** sites working properly in server. with through load balancer sites showing bad-gateway error.
+
+
+
+* clientGit/v4.3.5
+ surveys/v4.3.5
+ tasks/v4.3.5
+* git-issue/v4.3.5
+ leadStage/v4.3.5
+ meetingss/v4.3.5
+
+to qa-release/v4.3.5
+
+############### imp_info ###############
+-      3.36.93.16        172.26.15.58       
+-      54.204.162.162    172.26.2.244       
+-      34.227.76.200     172.26.12.134 
+
+############### issue ###############
+** curl 34.227.76.200....not able to access websites from ip address.
+** 
+
+############### linux ###############
+** while sleep 0.5; do curl http://nginx-handbook.test; done
+
+############### articles #############
+** https://hevodata.com/learn/mysql-master-master-replication/#:~:text=MySQL%20Master%20Master%20replication%20is,can%20have%20several%20slave%20nodes.
+-----master master replication
+
+############### questions ################
+** we get conflicts only if when someone has worked directly in qa-release/v4.3.5
+
+
+** Kubernetes, docker, terraform, gitlab cicd, nginx, apache, loadbalancing, reverse proxy server, master-master replication.
+
+** https://www.okta.com/identity-101/bad-gateway/#:~:text=A%20502%20bad%20gateway%20message,the%20message%20indicates%20the%20problem.
+
+** 
+

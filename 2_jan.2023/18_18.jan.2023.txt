@@ -1,0 +1,60 @@
+Error response from daemon: no build stage in current context
+
+Task update 18.jan.2023
+- passing variable in dockerfile for qa env 
+- http should automatically routed to https for qaui.utiliko.xyz
+
+passing variable in dockerfile for qa env
+https://www.geeksforgeeks.org/docker-arg-instruction/
+https://blog.bitsrc.io/how-to-pass-environment-info-during-docker-builds-1f7c5566dd0e
+
+http should automatically routed to https for qaui.utiliko.xyz
+https://security.stackexchange.com/questions/166204/does-http-redirect-to-https-automatically
+
+
+
+Milagro : for both ui and api
+Milagro
+qa-release/sprint310123 from qa
+snippet-n-template/mig310123 from qa-release/sprint310123
+git-issues/mig310123 under qa-release/sprint310123
+
+
+Utiliko
+qa-release/sprint230123 from qa
+git-issues/sprint230123 under qa-release/sprint230123
+contributer-changes/sprint230123 created  from  qa-release/sprint230123
+
+3.34.43.233  -lb 172.26.7.219
+
+qa
+43.201.62.110
+3.39.227.194
+
+dev
+13.209.11.52
+13.125.86.204
+
+
+
+return 301 https://$server_name$request_uri;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

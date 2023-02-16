@@ -1,0 +1,53 @@
+========================================================
+28.dec.2022 - Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+task-autodeployment of project-28.dec.2022 -WIP
+- faced version issue. was usuing wrong version of gitlab runner ....resolved
+- able to run pipeline only for particular branch
+- Currently studying about variables usage in cicd.
+- faced below three new errors today.....resolved
+
+error during connect: Post http://docker:2375/v1.40/auth: dial tcp: lookup docker on 192.168.178.1:53: no such host
+
+ERROR: Preparation failed: Unable to load image: gitlab-runner-prebuilt: "open /var/lib/gitlab-runner/gitlab-runner-prebuilt.tar.xz: no such file or directory"
+    
+WARNING: Support for registration tokens and runner parameters in the 'register' command has been deprecated in GitLab Runner 15.6 and will be replaced with support for authentication tokens. For more information, see https://gitlab.com/gitlab-org/gitlab/-/issues/380872
+
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+https://docs.gitlab.com/runner/install/linux-repository.html
+https://gitlab.com/gitlab-org/gitlab-runner/-/issues/1554
+https://techoverflow.net/2021/01/12/how-to-fix-gitlab-ci-error-during-connect-post-http-docker2375-v1-40-auth-dial-tcp-lookup-docker-on-no-such-host/
+https://docs.gitlab.com/ee/ci/yaml/
+
+Whether to run untagged builds [true/false]:   ---set as false
+
+/var/opt/gitlab/gitlab-ci/builds
+
+/var/opt/gitlab/gitlab-rails/shared/artifacts/
+
+** #Gitlab-runners
+
+** config.toml
+
+journalctl -u gitlab-runner -f
+
+echo "$CI_REGISTRY_USER"
+     - echo "$CI_REGISTRY_PASSWORD"
+
+
+CI_REGISTRY_URL      ....not required for my pipeline           
+CI_REGISTRY_USER          USER = samratkasarla
+CI_REGISTRY_PASSWORD      PASSWORD = Samrat@123
+CONTAINER_IMAGE           CONTAINER_IMAGE= utiliko
+ENV_TYPE                  ENV_TYPE = dev
+CI_PIPELINE_ID
+
+
+

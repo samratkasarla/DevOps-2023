@@ -1,0 +1,44 @@
+========================================================
+29.dec.2022 - Thursday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+Task-autodeployment 29.dec.2022  -WIP
+- Pipeline  is running successfully 54.204.162.162crosschecked in server 54.204.162.162 and 34.227.76.200.
+- container is running in 54.204.162.162. But not in 34.227.76.200 (not understood the reason for this)
+- pipeline for both the deployment is showing successful for both server.
+ssGitIssue_1/v4.3.6
+
+
+pipeline error
+Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?
+
+error while starting docker daemon
+failed to start daemon: pid file found, ensure docker is not running or delete /var/run/docker.pid
+failed to start daemon: error while opening volume store metadata database: timeout
+
+
+https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
+https://docs.docker.com/config/daemon/    ...docker daemon
+https://www.studytonight.com/post/how-to-check-whether-the-docker-daemon-or-the-container-is-running#:~:text=You%20can%20use%20systemctl%20to,status%20of%20the%20individual%20containers.
+https://docs.docker.com/engine/install/ubuntu/ .....docker installation 
+https://medium.com/codex/dockerize-angular-application-69e7503d1816
+
+apt-get install ca-certificates curl gnupg lsb-release
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+Installation of docker-ce 
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg lsb-release
+
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+gitlab-runner register -n --url https://gitlab.vivantcorp.com/ --registration-token nyyzTU23k3HjL3hzSsyA --executor docker --description "utiliko-ui-2" --docker-image "docker" --docker-privileged --docker-volumes "/certs/client"
+
+https://arstech.net/solved-cannot-connect-to-the-docker-daemon-at-tcp-docker2375-is-the-docker-daemon-running/
+
+
+Q. which process is using max RAM or Mem in linux.
+Q. How to deploy on aws EKS using gitlab cicd
+Q. what docker info command is for
+Q. docker rmi $(docker images -a -q)

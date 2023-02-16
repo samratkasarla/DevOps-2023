@@ -1,0 +1,144 @@
+Task-update 14_14.jan2023  -WIP
+- Master-master replication ->done
+- checking mysql replication, load time, load balance and performace of this server- WIP
+
+
+
+
+3.34.43.233  -lb 172.26.7.219
+
+qa
+43.201.62.110
+3.39.227.194
+
+dev
+13.209.11.52
+13.125.86.204
+
+Important article for mysql-replication.
+https://www.digitalocean.com/community/tutorials/how-to-set-up-mysql-master-master-replication
+https://phoenixnap.com/kb/mysql-remote-connection
+
+performance of servers
+https://www.netreo.com/blog/server-performance-guide/
+
+check mysql replication, load time, load balance and performace of this server. and then update me. and after that I'll start testing it
+-faced 502 bad gateway error . resolved.
+
+-Master-master replication
+ERROR 2003 (HY000): Can't connect to MySQL server on '3.39.227.194:3306' (111)
+- Due to change in mysql version ther are changes in mysql configuration file.
+
+https://phoenixnap.com/kb/mysql-remote-connection
+mysql servers should be able to connect remotely from servers for master-master replication.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Master-master replication
+accessing mysql server remotely
+gitlab cicd for multiple branches.
+load balancing with nginx 
+Deployment of node.js and angular app
+data migration from virtual to aws
+terraform module for ec2 and vpc
+manifest file for kubernetes.
+EKS, creating cluster
+monitering with cloudwatch
+git branching startegy
+project architecture
+what is booting process
+java python nodejs angular 
+
+

@@ -1,0 +1,56 @@
+** First we need simple node.js application running.
+** In this case it is running on port 8080.
+** That can be verified by running command #curl localhost:8080, on
+terminal.
+
+** Now to install nginx on server.
+RUN
+#sudo apt update && sudo apt upgrade -y
+#sudo apt install nginx -y
+
+** Path of configuration file is /etc/nginx/nginx.conf
+
+** Renamed the default configuration file to nginx.conf.backup and created the new one.
+#mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+#touch /etc/nginx/nginx.conf
+
+** Now to configure nginx as a reverse proxy for nodejs application, open the configuration file
+with vim editor and insert the following content.
+#vim /etc/nginx/nginx.conf
+
+events {
+
+}
+
+http {
+
+    include /etc/nginx/mime.types;
+
+    server {
+        listen 80;
+        server_name node.test;
+
+        location / {
+                proxy_pass "https://localhost:8080/";
+        }
+    }
+}
+
+
+** this configuration clearly shows that the request coming on the port 80, will be 
+forwarded to localhost:8080.
+** once configuration is done , save and exit from the vim editor and use following commands.
+
+#nginx -t
+=> the above command is for checking whether nginx configuration file is valid or not.
+
+#nginx -s reload
+=> to restart the nginx
+
+** this way we can use nginx as reverse proxy, where no need to expose application publicly.
+
+** In this case , i have run nodejs application on docker container.
+
+54.204.162.162 -> this is the public ip address of the server.
+
+

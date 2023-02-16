@@ -1,0 +1,37 @@
+========================================================
+21.dec.2022 - Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+#### merging both ui and api
+meetingss/v4.3.6   ui    onhold for api
+git-issue/v4.3.6   ui    onhold for api  --no changes in this branch
+leave-mgnt/v4.3.6  ui  api
+tasks/v4.3.6   ui  api
+automation-testing/v4.3.6  ui   this is not in api
+pbx_changes/v4.3.6  ui  api
+tinyEditorForUiOnly/v4.3.6  ui  this is not in api
+writeCheckss/v4.3.6   ui  api
+
+meetingss/v4.3.6   merged for ui-only    
+git-issue/v4.3.6   merged for ui-only    
+leave-mgnt/v4.3.6  
+tasks/v4.3.6  
+automation-testing/v4.3.6    this branch is not in api
+pbx_changes/v4.3.6  
+tinyEditorForUiOnly/v4.3.6   this branch is not in api
+writeCheckss/v4.3.6   
+
+** /etc/init.d/nginx start
+
+** https://stackoverflow.com/questions/7646972/nginx-invalid-pid-number
+
+ps aux | grep nginx 
+PID of nginx master process
+
+echo PID > /var/run/nginx.pid
+nginx -s reload
+ps -eaf|grep nginx 
+
+task-status  21.dec.2021
+1. Load balancing
+- working on debugging nginx restart issue

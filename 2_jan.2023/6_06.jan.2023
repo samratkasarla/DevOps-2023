@@ -1,0 +1,27 @@
+========================================================
+06.jan.2023 - Friday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Todays update- 06.jan.2023
+- Merged  client/sprint011023, git-issues/sprint011023  to qa-release
+- Checked gzip in nginx and enabled it
+- KT to Surya  
+
+
+- Gitlab ci, gitlab, docker, kubernetes, nodejs, angular, python, jenkins, terraform, aws, shell scripting, linux, javascript
+- selenium, sonarqube, git, github
+
+- gzip on 
+- gzip_comp_level
+- gzip_types
+- gzip_types text/css text/javascript;
+- add_header Vary Accept-Encoding;
+
+- curl -I http://nginx-handbook.test/mini.min.css    for uncompressed version
+- curl -I -H "Accept-Encoding: gzip" http://nginx-handbook.test/mini.min.css     for compressed version of response.
+
+
+
+monitering tools, security tools, 
+
+pm2, an

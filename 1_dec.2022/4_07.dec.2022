@@ -1,0 +1,47 @@
+========================================================
+07.dec.2022 -Wednesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+** https://medium.com/@vinodkrane/microservices-scaling-and-load-balancing-using-docker-compose-78bf8dc04da9 loadbalancing with docker
+
+** https://medium.com/rate-engineering/using-docker-containers-to-run-a-distributed-application-locally-eeabd360bca3 using docker compose to run applications.
+
+** https://forums.docker.com/t/custom-container-name-for-docker-compose/48089/2  ...custom container name with docker-compose
+
+** https://docs.docker.com/engine/reference/commandline/service_create/ .....docker service ps
+
+** https://docs.docker.com/engine/reference/commandline/run/#examples ....docker run
+
+** #docker-compose scale petstore=2
+
+** #docker-compose up --scale petstore=3
+
+** #docker-compose up --build 
+
+** #nslookup http://dockerhost:5000
+
+** #aws amplify
+
+**   
+
+version: "3.4"
+services:
+    node-app:
+        build: .
+        ports:
+          - "8080"
+
+
+
+* clientGit/v4.3.5
+ Surveys/v4.3.5
+ tasks/v4.3.5
+ git-issue/v4.3.5
+ leadStage/v4.3.5
+ meetingss/v4.3.5
+
+to qa-release/v4.3.5
+
+
+
+

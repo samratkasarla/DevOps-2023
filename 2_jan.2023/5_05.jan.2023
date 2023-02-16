@@ -1,0 +1,18 @@
+========================================================
+05.jan.2023 - Thursday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+client/sprint011023   git-issues/sprint011023 export-entire-report/sprint011023
+git-issues/sprint011023
+export-entire-report/sprint011023
+
+qa-release/sprint011023
+
+
+** who is the dns provider of ours ?
+** 
+
+sudo apt-get install ca-certificates curl gnupg lsb-release
+
+
+nginx as reverse proxy

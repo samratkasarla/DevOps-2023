@@ -1,0 +1,82 @@
+========================================================
+27.dec.2022 - Tuesday &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+========================================================
+
+Task - Autodeployment of the project.
+- facing issue in building dockerfile in servers. -> resolved
+- Started working on cicd - WIP
+
+Task - MR 
+- meetingss/v4.3.6
+- automation-testing/v4.3.6   ...not in api
+- git-issue/v4.3.6 
+--> merged above branches in utiliko ui and api.
+
+--this error got while building dockerfile of my-first-pipeline in 34.227.76.200
+npm ERR! code EAI_AGAIN
+npm ERR! syscall getaddrinfo
+npm ERR! errno EAI_AGAIN
+npm ERR! request to https://registry.npmjs.org/vary/-/vary-1.1.2.tgz failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2022-12-27T06_19_20_098Z-debug-0.log
+-> If you get this error with Firebase Cloud Functions, this is due to the limitations of the free tier (outbound networking only allowed to Google services).
+-> There is no single solution because it entirely depends on why the DNS server sends that back. Maybe it's overloaded, maybe the network is down, maybe it got the same reply from its upstream server.
+-> above link is in package-lock.json file which is used to install dependencies of node.js
+-> error got resolved on restarting the system.
+
+
+meetingss/v4.3.6
+automation-testing/v4.3.6   ...not in api
+git-issue/v4.3.6   
+
+imp-info
+SjeTQNTo-9y7zusyKpJX
+
+** 54.204.162.162   node -v  ---node v17.9.1 (npm v8.11.0)
+
+
+** dockerfile, cicd, running docker container, 
+
+** dockerfile is not building image in server 34.227.76.200
+
+** runner can be run as docker container or it can be installed as package.  apt install gitlab-runner 
+
+** https://nodejs.org/en/docs/guides/nodejs-docker-webapp/    .....node -docker -app
+** https://www.geeksforgeeks.org/how-to-update-node-js-and-npm-to-next-version/ 
+** https://github.com/nodejs/node/issues/15780
+
+** This error is caused due to network issues, so in windows operating system run Troubleshooter, you may find errors like "Your DNS Server Might Be Unavailable". If you get this error, please reset your Network adapter.
+
+** docker system prune -a --volumes -f
+
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+
+
+#docker build
+#docker exec
+#docker run
+** Checking logs of docker container to debug issues.
+
+** build laptop:
+    image: alpine
+    tags: 
+        - samrat
+    script: 
+        - echo "Building a laptop"
+        - mkdir build
+        - touch build/computer.txt
+        - echo "Mainboard" >> build/computer.txt
+        - cat build/computer.txt
+        - echo "Keyboard" >> build/computer.txt
+        - cat build/computer.txt
+

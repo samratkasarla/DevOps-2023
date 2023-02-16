@@ -1,0 +1,67 @@
+task-update 13.jan.2013
+- Autodeployment of qa - complete with cicd and nginx part, domains qaui.utiliko.xyz and qapi.utiliko.xyz are working.
+- Master-Master Replication -   WIP
+
+
+
+
+qa
+3.34.43.233 -lb
+3.39.227.194
+
+43.201.62.110
+
+
+qa-release/v2.0.102
+    migration/v2.0.102
+        lead-stage-migration/v2.0.102
+
+CREATE USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'superSecretPassword!123';
+GRANT ALL ON *.* TO 'user'@'localhost';
+
+
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+
+
+
+3.39.227.194  --ip-172-26-7-56
+
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000003 |      347 | example      |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+
+
+CHANGE MASTER TO MASTER_HOST = '43.201.62.110', MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000096', MASTER_LOG_POS = 1004;
+
+
+43.201.62.110  --ip-172-26-6-96
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000006 |      347 | example      |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+
+
+CHANGE MASTER TO MASTER_HOST = '3.39.227.194', MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000126', MASTER_LOG_POS = 157;
+
+
+
+Make sure that the remote access to the MySQL server is enabled. You can do this by checking the MySQL server's configuration file (my.cnf or my.ini) for the bind-address setting. If the bind-address is set to "127.0.0.1", remote access is disabled, and you will need to change it to the server's IP address or to 0.0.0.0 to allow all incoming connections.
+
+Create a new user account for the remote connection. You can do this by logging into the MySQL server using the root account and running the following command:
+CREATE USER 'username'@'hostname' IDENTIFIED BY 'password';
+
+Grant the new user the necessary permissions. To grant all privileges, you can run the following command:
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'hostname';
+
+Finally, use a MySQL client like MySQL Workbench or the command-line tool to connect to the MySQL server using the new user account.
+
+Make sure that the port 3306 is open in firewall and the IP is whitelisted to which you are trying to connect to the mysql server remotely
+
+If you are still unable to connect, check the mysql error log file to see if there is any error message that can help you troubleshoot the issue.
+
+
+
+
