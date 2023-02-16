@@ -1,0 +1,112 @@
+image: "docker:19.03.15"
+services:
+  - docker:19.03.15-dind
+.only-dev:
+  only:
+   - dev-cicd-test
+.only-qa:
+  only:
+   - qa-cicd-test 
+stages:
+  - build
+  - deploy-aws
+  - deploy-gcp
+build for dev:
+  variables:
+     ENV_TYPE: dev
+  extends: .only-dev
+  stage: build 
+  timeout: 3 hours
+  tags:
+    - utiliko-ui-qa-1 
+  script:
+    - echo "this is build for ${ENV_TYPE}"
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+	
+build for qa:
+  variables:
+     ENV_TYPE: qa
+  extends: .only-qa
+  stage: build 
+  timeout: 3 hours
+  tags:
+    - utiliko-ui-qa-1
+  script:
+    - echo "this is build for ${ENV_TYPE}"
+    - docker system prune -a --volumes -f
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build --pull -t "${CONTAINER_IMAGE}-v2-${ENV_TYPE}" --build-arg ENV_TYPE=${ENV_TYPE} .
+    - docker tag "$CONTAINER_IMAGE-v2-${ENV_TYPE}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}"
+    - docker tag "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:${CI_PIPELINE_ID}" "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker push "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+deploy-aws for dev:
+  variables:
+     ENV_TYPE: dev
+  extends: .only-dev
+  stage: deploy-aws
+  tags:
+    - utiliko-ui-qa-2
+  script:
+    - echo "this is build for ${ENV_TYPE}"
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 4000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+	
+deploy-aws for qa:
+  variables:
+     ENV_TYPE: qa
+  extends: .only-qa
+  stage: deploy-aws
+  tags:
+    - utiliko-ui-qa-2 
+  script:
+    - echo "this is build for ${ENV_TYPE}"
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 4000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+
+
+deploy-gcp for dev:
+  variables:
+     ENV_TYPE: dev
+  extends: .only-dev
+  stage: deploy-gcp
+  tags:
+    - utiliko-ui-qa-1
+  script:
+    - echo "this is build for ${ENV_TYPE}"
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 4000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+	
+deploy-gcp for qa:
+  variables:
+     ENV_TYPE: qa
+  extends: .only-qa
+  stage: deploy-gcp
+  tags:
+    - milagro-ui-runner-gcp #(not created yet)
+  script:
+    - chmod +x ./ui.sh
+    - ./ui.sh &
+    - docker login "$CI_REGISTRY_URL" -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker pull "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
+    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest" --format="{{.ID}}")) &
+    - docker run -p 4000:80 -d "$CI_REGISTRY_URL/${CONTAINER_IMAGE}-v2-${ENV_TYPE}:latest"
