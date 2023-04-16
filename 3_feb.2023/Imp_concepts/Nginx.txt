@@ -1,0 +1,31 @@
+
+https://www.freecodecamp.org/news/the-nginx-handbook/#how-to-use-nginx-as-a-reverse-proxy
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+http {
+    server {
+        listen 80;
+        server_name library.test;
+
+        return 200 "your local library!\n";
+    }
+
+
+    server {
+        listen 80;
+        server_name librarian.library.test;
+
+        return 200 "welcome dear librarian!\n";
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. ls, cat, ps, grep, find, nproc, ulimit and nano.
+
+2. https://github.com/fhsinchy/nginx-handbook-projects.git  project code used in nginx handbook.
+
+3. Nginx focuses on high performance, high concurrency, and low resource usage. 
+
+4. 

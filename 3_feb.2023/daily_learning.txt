@@ -1,0 +1,198 @@
+* how to check process using highest memory ?
+* how to check which process is using the file ?
+* how to check info of machine ?
+* how to mention variables in gitlab cicd ?
+
+DATE: 19.jan.2023 - Thursday ###################################################################################################################################################################
+
+* file which is used to connect the api with database is 
+* bind_address = 0.0.0.0  for database should be connected from any ip.
+* database should be created first before hitting stop slave; while doing master-master replication.
+
+
+DATE: 20.jan.2023 - Friday ###################################################################################################################################################################
+
+* giving access to user so that he could connect from mysql workbench
+* mysql cli , mysql workbench.
+*
+
+DATE: 24.jan.2023 - Tuesday ###################################################################################################################################################################
+
+https://medium.com/the-programmer/aws-eks-fundamentals-core-components-for-absolute-beginners-part1-9b16e19cedb3
+https://medium.com/@samanway1996/writing-a-jenkins-file-for-multi-branch-build-pipeline-d3f0e208d1c1
+
+
+DATE: 24.jan.2023 - Tuesday ###################################################################################################################################################################
+
+https://support.google.com/a/answer/1071480?hl=en
+
+
+DATE: 30.jan.2023 - Monday ###################################################################################################################################################################
+
+https://medium.com/@sanjeevm/getting-started-with-azure-devops-ci-cd-pipelines-ce9e69d37dda
+https://stackoverflow.com/questions/42992397/how-to-setup-node-environment-variable-in-dockerfile-for-running-node-js-applica
+https://myops.medium.com/simple-deployment-on-kubernetes-aws-eks-with-gitlab-and-gitlab-ci-50f846434310
+https://medium.com/google-cloud/aws-to-google-cloud-platform-service-mapping-5a1689d41f01
+
+what is ssl in mysql configuration file.
+what is cloud computing ?
+
+DATE: 31.jan.2023 - Tuesday ###################################################################################################################################################################
+
+https://dba.stackexchange.com/questions/76194/add-database-to-existing-replication-which-uses-binlog-do-db
+https://ngugijoan.medium.com/understanding-kubernetes-namespaces-c2f81d0b94a5
+https://medium.com/google-cloud/kubectl-commands-101-bbeec4c83e45
+
+DATE: 01.feb.2023 - Wednesday ###################################################################################################################################################################
+
+https://www.geeksforgeeks.org/remove-all-containers-and-images-in-docker/
+
+DATE: 02.feb.2023 - Thursday ###################################################################################################################################################################
+
+https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
+
+ALTER USER 'vivant'@'localhost' IDENTIFIED WITH mysql_native_password BY 'vivant@123';
+flush privileges;
+
+ALTER USER 'vivant'@'%' IDENTIFIED WITH mysql_native_password BY 'vivant@123';
+
+
+DATE: 03.feb.2023 - Friday ###################################################################################################################################################################
+
+
+https://devnote.in/how-to-uninstall-mysql-from-ubuntu-20-04/
+https://www.devart.com/dbforge/mysql/how-to-install-mysql-on-ubuntu/
+https://phoenixnap.com/kb/mysql-server-through-socket-var-run-mysqld-mysqld-sock-2
+https://superuser.com/questions/980841/why-is-mysqld-pid-and-mysqld-sock-missing-from-my-system-even-though-the-val
+https://www.letscloud.io/community/how-to-troubleshoot-socket-errors-in-mysql
+
+DATE: 06.feb.2023 - Monday ###################################################################################################################################################################
+
+https://www.digitalocean.com/community/questions/completely-uninstall-mysql-server
+
+
+DATE: 09.feb.2023 - Thursday ###################################################################################################################################################################
+
+https://phoenixnap.com/kb/how-to-check-ubuntu-version#:~:text=Check%20Ubuntu%20Version%20with%20lsb_release%20Command&text=Open%20the%20terminal%20(use%20the%20Ctrl%2BAlt%2BT%20keyboard%20shortcut).&text=The%20output%20displays%20the%20current,18.04%20(codenamed%20Bionic%20Beaver).
+
+
+https://www.hostinger.com/tutorials/504-gateway-timeout#:~:text=Contact%20Customer%20Support-,What%20Is%20a%20504%20Gateway%20Timeout%20Error%3F,by%20refreshing%20the%20web%20page.
+
+
+DATE: 10.feb.2023 - Friday ###################################################################################################################################################################
+
+https://medium.com/the-programmer/kubernetes-fundamentals-for-absolute-beginners-architecture-components-1f7cda8ea536
+https://www.tecmint.com/fix-error-2003-hy000-cant-connect-to-mysql-server-on-127-0-0-1-111/
+https://www.howtogeek.com/devops/how-to-keep-docker-containers-running-when-the-daemon-stops/
+https://medium.com/bb-tutorials-and-thoughts/docker-entrypoint-vs-cmd-8934cfdf78f3
+https://medium.com/globant/understanding-nginx-as-a-reverse-proxy-564f76e856b2
+
+
+DATE: 13.feb.2023 - Monday ###################################################################################################################################################################
+
+To-do
+* Project architecture of java project.
+
+* Prometheus & Grafana are open source monitering tool.
+https://medium.com/geekculture/how-to-monitor-docker-metrics-using-prometheus-grafana-707b970f1f06
+https://community.letsencrypt.org/t/failed-to-use-lets-encrypt-dns-challenge-validation/167973
+
+Crontab- job sceduling
+https://www.tecmint.com/create-and-manage-cron-jobs-on-linux/
+
+If you want to stash commits
+#git stash push --include-untracked
+If stashed commits are no more needed
+#git stash drop
+
+
+DATE: 14.feb.2023 - Tuesday ###################################################################################################################################################################
+
+
+https://stackoverflow.com/questions/53677592/docker-pull-unexpected-eof
+https://medium.com/tilicholabs/what-is-ci-cd-c7c047b80e6b
+https://stackoverflow.com/questions/64313290/gitlab-checking-pipeline-status-running-forever
+
+
+DATE: 15.feb.2023 - Wednesday ###################################################################################################################################################################
+
+https://phoenixnap.com/kb/set-up-cron-job-linux
+
+DATE: 16.feb.2023 - Thursday ###################################################################################################################################################################
+
+https://www.varonis.com/blog/git-branching#:~:text=To%20merge%20branches%20locally%2C%20use,branch%20into%20the%20main%20branch.
+what is lint CI ?
+https://phoenixnap.com/kb/how-to-set-or-change-timezone-date-time-ubuntu
+https://www.geeksforgeeks.org/date-command-linux-examples/
+https://www.cyberciti.biz/faq/howto-set-date-time-from-linux-command-prompt/
+https://docs.digitalocean.com/support/how-can-i-renew-lets-encrypt-certificates/
+http://ubuntuguide.net/view-and-kill-current-processes-on-ubuntu#:~:text=Ubuntu%20also%20has%20a%20graphical,click%20%E2%80%9CEnd%20Process%E2%80%9D%20button.
+https://www.digitalocean.com/community/tutorials/how-to-create-let-s-encrypt-wildcard-certificates-with-certbot
+
+
+DATE: 17.feb.2023 - Friday ###################################################################################################################################################################
+
+
+https://www.freecodecamp.org/news/the-nginx-handbook/#how-to-use-nginx-as-a-reverse-proxy
+https://onepagezen.com/letsencrypt-auto-renew-certbot-apache/
+https://docs.docker.com/engine/reference/commandline/ps/
+docker ps --filter publish=9000
+
+DATE: 20.feb.2023 - Monday ###################################################################################################################################################################
+
+https://opensource.com/article/18/7/how-check-free-disk-space-linux
+https://serverspace.io/support/help/grafana-ubuntu-20-04/
+https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
+https://stackoverflow.com/questions/28303978/changing-grafana-port
+https://www.cyberciti.biz/faq/remove-uninstall-nginx-from-ubuntu-debian-linux-apt-get-command/
+https://computingforgeeks.com/install-prometheus-server-on-debian-ubuntu-linux/
+
+
+
+DATE: 21.feb.2023 - Tuesday ###################################################################################################################################################################
+
+https://medium.com/geekculture/how-to-monitor-docker-metrics-using-prometheus-grafana-707b970f1f06
+https://medium.com/devops-dudes/install-prometheus-on-ubuntu-18-04-a51602c6256b
+https://medium.com/devops-dudes/install-prometheus-on-ubuntu-18-04-a51602c6256b
+Q. WHat is DSL ?
+
+https://www.2daygeek.com/find-check-user-information-in-linux/ 
+https://www.youtube.com/watch?v=9DqOMZrc4PA
+https://www.linode.com/docs/guides/introduction-to-firewalld-on-centos/ 
+
+
+DATE: 24.feb.2023 - Friday ###################################################################################################################################################################
+
+https://www.thelinuxfaq.com/ubuntu/ubuntu-17-04-zesty-zapus/prometheus?type=uninstall
+https://www.youtube.com/watch?v=CjABEnRg9NI
+
+ DATE: 27.feb.2023 - Monday #############################################################################################################################################################
+
+mysql -u USER -pPASSWORD -D DATABASE -e "SQL_QUERY"
+
+https://myops.medium.com/simple-deployment-on-kubernetes-aws-eks-with-gitlab-and-gitlab-ci-50f846434310
+Q. What is kubeconfig ?
+Q. 
+
+https://serverfault.com/questions/518320/how-to-detect-my-server-is-used-as-a-port-scanner
+https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
+
+ DATE: 28.feb.2023 - Tuesday ###################################################################################################################################################################
+
+Port scanning 
+1. A port scan is a common technique hackers use to discover open doors or weak points in a network. A port scan attack helps cyber criminals find open ports and figure out whether they are receiving or sending data. It can also reveal whether active security devices like firewalls are being used by an organization. 
+2. Port scanning can provide information such as:
+ a: Services that are running
+ b: Users who own services
+ c: Whether anonymous logins are allowed
+ d: Which network services require authentication
+ 
+https://samanpavel.medium.com/vnstat-network-traffic-monitor-3e9ca58aecb5
+python3 -m http.server 8000 --directory /tmp
+https://amod-kadam.medium.com/linux-network-interface-s-minimal-know-how-helped-me-a-lot-168547b471d9
+
+ DATE: 01.mar.2023 - Tuesday ###################################################################################################################################################################
+
+https://www.geeksforgeeks.org/find-command-in-linux-with-examples/
+ 
+

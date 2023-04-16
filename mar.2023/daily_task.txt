@@ -1,0 +1,328 @@
+
+ DATE: 01.mar.2023 - Wednesday #########################################################################################################################################################
+
+task-update 01.mar.2023
+1. Implementing contineous monitering for utiliko qa servers: WIP
+- able to see target servers on 13.233.132.61:9090/target
+2. helped vishal patil to revert the commit.
+3. identified the reason for pipeline failure of milagro-dev gcp deployment.
+4. resolved utiliko-qa pipeline error.
+
+to-do
+
+http_requests_total{job="prometheus"}
+
+
+git checkout $1
+git pull 
+git pull origin $2
+git push
+
+ DATE: 02.mar.2023 - Thursday #########################################################################################################################################################
+
+ DATE: 03.mar.2023 - Friday #########################################################################################################################################################
+
+projectMilestone/sprint230123
+git-issues/sprint010323
+
+pulled qa-release/sprint010323 to projectMilestone/sprint230123
+
+TASK-UPDATE 03.mar.2023  
+1. Helped vishal to resolve git clone issue: done
+2. Implementing monitering for utiliko-qa: WIP
+3. checking list of Merged branches to minorfixes/sprint220223 (task given by shiva): done 
+4. Merged projectMilestone/sprint230123 and git-issues/sprint010323 to qa : done
+
+to-do
+1. implementing monitering for utiliko-qa
+2. shell scripting, terraform
+3. checking method to check list of MR to particular branch
+4. blog on one topic 
+
+
+ui-issues
+item-categories-minor-fixes
+default-redirection-fix
+
+ DATE: 06.mar.2023 - Monday #########################################################################################################################################################
+
+task-update 06.mar.2023
+1. Implementing method to moniter container logs: WIP
+2. resolved koders.xyz 'page_not_found' error. Done
+3. merged client-payment/sprint010323 to qa (utiliko ui and api). Done
+ssh vivant-db-access@13.125.86.204
+vivant-db-access
+vivant123
+
+
+Utilko Db credentials
+
+User: root
+dbname: utilko_dev
+DB password: vivant@123
+
+172.26.1.119
+
+
+@Samrat    please create the following branches for v3.4.11
+
+qa
+ qa-release/sprint150323
+  leadsettings/sprint150323
+  
+  git-issues/sprint150323 
+  vendor-refund-list/sprint150323
+  
+  
+  
+ qa-release/sprint140323
+ voidfixes/sprint140323
+ 
+  DATE: 13.mar.2023 - Monday ########################################################################################################################################################
+
+task-update 13.mar.2023
+1. monitering logs with grafana loki : WIP
+2. merged projectMilestone/sprint230123  -> qa-release/sprint230123 -> qa 
+3. created employee-Email-edit/sprint150323, project-category/sprint150323, Lead-settings-stage/sprint150323
+
+projectMilestone/sprint230123  -> qa-release/sprint230123 -> qa 
+
+C:\Users\developer-16\Desktop\samrat\Projects\utiliko\utiliko-ui\src\app\admin\sales\opportunity\opportunity-details\opportunity-meetings\opportunity-meetings.component.html
+
+
+employee-Email-edit/sprint150323
+project-category/sprint150323
+
+Lead-settings/sprint150323  this branch not needed
+
+Lead-settings-stage/sprint150323
+
+
+  DATE: 14.mar.2023 - Tuesday ########################################################################################################################################################
+
+task-update -14.mar.2023
+1. Monitering : WIP
+- able to view container logs on grafana
+2. checking consol-log display using docker package manager possible or not: WIP
+
+
+
+/var/lib/docker/containers/f86c67e6a60d47a1014bf5d4e05cfc807951815755bfc24b3d0ebbc4dae51b22/*log
+
+  DATE: 15.mar.2023 - Wednesday ########################################################################################################################################################
+
+ checking consol-log display using docker package manager possible or not: WIP
+ 
+qa-release/sprint230123    src/app/admin/sales/opportunity/opportunity-details/opportunity-meetings/opportunity-meetings.component.html
+
+  DATE: 16.mar.2023 - Thursday ########################################################################################################################################################
+
+@Samrat take pull of QA on migration/sprint080323
+
+todays-update
+1. checking consol-log display using docker package manager possible or not: WIP
+
+  DATE: 17.mar.2023 - Friday ########################################################################################################################################################
+
+task-update 17.
+
+  DATE: 20.mar.2023 - Monday ########################################################################################################################################################
+
+task-update 20.mar.2023
+1. change architecture of utiliko-qa to single server: done
+- Nginx configuration
+- SSL apply
+
+qa1 qa2 mig 
+
+43.205.230.34   qa1
+13.235.33.120   qa2
+
+Create qa-release/sprint040423
+
+customreports/sprint040423
+
+existing-emailpbx/sprint220323
+
+server 13.209.11.52:9000; server 13.125.86.204:9000; 
+
+  DATE: 21.mar.2023 - Tuesday ########################################################################################################################################################
+
+task-update 21.mar.2023
+1. qa1 and qa2 configured with cicd and nginx.
+2. utiliko dev server architecture changed to single server
+
+qa1 qa2 mig -milagro
+1. qa1 qa2 mig branches created.
+2. nginx configuration of ui and api done
+
+milagro
+qa1  43.205.230.34     milagro-ui-qa-1    milagro-api-qa-1
+
+qa2  13.235.33.120     milagro-ui-qa-2    milagro-api-qa-2 
+
+13.209.11.52 utiliko-dev
+
+ssh-user: milagroqa
+ssh-Pass: milagro@123
+db-name: milagro_db
+db-pass: root@7896
+db-user: root
+
+
+utiliko
+qa   43.201.62.110
+
+sudo apt update
+sudo apt install snapd
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+
+
+utiliko-dev-server: 13.209.11.52
+ssh-user: vivant-db-access
+ssh-pass: vivant123
+
+Utilko Db credentials
+
+User: root
+dbname: utilko_dev
+DB password: vivant@123
+
+myavs
+kishor
+VivantAWS2017
+
+ssh-user: utilikoqa@43.201.62.110
+Pass:utilikoqa@123
+
+Utilko Db credentials
+User: root
+dbname: tenant_utiliko
+DB password: root@7896
+
+13.126.104.255
+
+https://docs.google.com/document/d/15xDe8_mU0TwBm9Wsm-wGtVc6Jfnc2M7hgX5ihgxbjJE/edit
+
+mysqldump -u root –pVivant2018! tenant_milagro > milagro-mig-db.sql
+mysql -u root –pVivant2028! tenant_milagro < milagro-mig-db.sql
+
+host/IP: 35.208.103.117
+port: 22
+username: dev-mysql
+pw: Milagro2020!
+
+db credentials
+username: root
+pw: Milagro2020!
+
+
+Task-update 23.03.2023
+
+completed tasks
+1.creating dump file for old milagro migration and uploading it on new migration server.
+2.Uploaded dump file from existing migration server to new qa3-mig-milagro server.
+3.created new ssh user for mysql workbench on qa3-mig-milagro server.
+4.Merged branch projectMilestone/sprint230123 to qa for ui and api (utiliko)
+5.utiliko-qa single server architecture documentation.
+
+in progress
+1. uploading dump in qa1 and qa2
+
+  DATE: 24.mar.2023 - Friday ########################################################################################################################################################
+
+
+Milagro
+
+@Samrat update qa-release/sprint220323 with qa code then merge below branches with qa-release/sprint220323
+
+reportsexport-excel/sprint220323
+mailssfixes/sprint220323  no change in ui
+smr3d/sprint220323
+transactionaddon1/sprint220323
+
+
+@Samrat please create these three branches
+
+ticket895/sprint220323
+onlineorder/sprint220323
+gcsplittender/sprint220323
+
+
+@Samrat please create these three branches
+
+ticket895/sprint220323
+gcsplittender/sprint220323
+
+onlineorder/sprint290323
+
+  DATE: 29.mar.2023 - Wednesday ########################################################################################################################################################
+
+priceedit_111/sprint290323
+
+priceedit_110/sprint290323
+
+  DATE: 30.mar.2023 - Wednesday ########################################################################################################################################################
+
+ssh -i mil-dev-qa mil-dev@35.208.103.117
+
+sqp_f1db5249a00612093a19e8559d87c1a84b75cb06
+
+sonarqube:
+  image: sonarsource/sonar-scanner-cli
+  variables:
+    SONAR_TOKEN: <your-sonar-token>
+    SONAR_PROJECT_KEY: <your-sonar-project-key>
+    SONAR_HOST_URL: <your-sonar-server-url>
+  script:
+    - sonar-scanner
+	
+	
+openSSL win
+
+  DATE: 31.mar.2023 - Friday ####################################################################################################################################################### 
+
+creating of eks cluster
+deployment.yml service.yml configmap.yml secret.yml
+kubectl cli
+
+kubectl get namespace
+kubectl get pods
+kubectl get services
+kubectl get deployment
+kubectl get deploy deploymentname -o yaml
+kubectl get all –all-namespaces
+kubectl describe deployment test-deploy
+kubectl get node
+kubectl delete node <node_name>
+kubectl top node
+kubectl apply -f deployment.yml
+kubectl create deployment test-deploy --image=nginx --replicas=3
+kubectl set image deployment/demo-deployment nginx=nginx:1.16.1 --record
+kubectl edit deployment.v1.apps/demo-deployment
+
+
+docker login "milagro-dev-rpm.milagro.dev" -u "vivant_user" -p "vivant@123"
+
+
+2189e98aff49  ui-dev-utiliko
+ab48062bf469  api-dev-utiliko
+
+docker build --pull -t "utiliko-ui-dev"  --build-arg ENV_TYPE=dev .
+
+docker run -p 9000:80 -d --name utiliko-ui-manual "utiliko-ui-dev"
+
+
+ DATE: 03.april.2023 - Monday ####################################################################################################################################################### 
+
+docker build --pull -t "utiliko-ui-dev"  --build-arg ENV_TYPE=dev .
+
+docker run -p 9000:80 -d --name utiliko-ui-manual "utiliko-ui-dev"
+
+
+
+
+
+ 

@@ -1,0 +1,72 @@
+https://medium.com/@rakeshkumarnalumachu/websphere-application-server-32ebf7d3f9bc
+https://medium.com/wlsdmforweblogic/weblogic-vs-websphere-2361a1827c6c
+
+
+
+
+ DATE: 01.mar.2023 - Wednesday #########################################################################################################################################################
+
+https://www.gitkraken.com/learn/git/problems/revert-git-commit#:~:text=Revert%20Git%20Commit%20in%20the%20Terminal&text=This%20will%20show%20you%20a,negates%20the%20commit%20you%20specified.
+https://linuxhint.com/monitor-log-files-prometheus/#:~:text=The%20log%20files%20are%20matches,desired%20log%20files%20via%20grok_exporter.
+https://medium.com/swlh/automating-tasks-with-shell-scripts-543422a12cd5
+
+ DATE: 03.mar.2023 - Friday #########################################################################################################################################################
+
+https://www.digitalocean.com/community/tutorials/install-wordpress-nginx-ubuntu
+https://www.middlewareinventory.com/blog/terraform-aws-example-ec2/
+
+ DATE: 06.mar.2023 - Monday #########################################################################################################################################################
+
+https://acloudguru.com/hands-on-labs/docker-container-monitoring-with-prometheus
+https://yuriktech.com/2020/03/21/Collecting-Docker-Logs-With-Loki/
+
+  DATE: 13.mar.2023 - Monday #########################################################################################################################################################
+
+https://medium.com/techmormo/how-do-docker-volumes-enable-persistence-for-containers-docker-made-easy-4-2093a1783b87
+https://www.simplilearn.com/terraform-interview-questions-and-answers-article
+
+  DATE: 14.mar.2023 - tuesday #########################################################################################################################################################
+
+https://medium.com/the-programmer/working-with-deployment-in-kubernetes-8450989e4f80
+
+  DATE: 15.mar.2023 - Wednesday #########################################################################################################################################################
+
+@Samrat Please create QA-release/sprint220323 in Utiliko and under that create:
+Web-phonePBX/Sprint220323
+
+qa-release/sprint220323
+Web-phonePBX/sprint220323
+
+https://thomaslevesque.com/2020/05/29/git-tip-how-to-fix-an-accidental-commit-on-the-wrong-branch/
+
+  DATE: 15.mar.2023 - Wednesday #########################################################################################################################################################
+
+https://stackoverflow.com/questions/28945471/how-to-run-multiple-gitlab-ci-runners
+
+
+  DATE: 20.mar.2023 - Monday ########################################################################################################################################################
+
+
+  DATE: 22.mar.2023 - Monday ########################################################################################################################################################
+
+https://medium.com/@saurabh6790/generate-wildcard-ssl-certificate-using-lets-encrypt-certbot-273e432794d7
+https://mhagemann.medium.com/correct-way-to-delete-a-certbot-ssl-certificate-e8ee123e6e01
+
+https://www.tecmint.com/8-linux-nslookup-commands-to-troubleshoot-dns-domain-name-server/
+
+  DATE: 29.mar.2023 - Wednesday ########################################################################################################################################################
+
+https://www.harness.io/blog/what-is-gitlab-ci
+
+
+  DATE: 31.mar.2023 - Friday ###########################################################################################################################
+
+
+https://medium.com/an-engineer-a-reader-a-guy/git-fix-commits-mistakenly-pushed-to-master-branch-a73e62b7885a
+https://medium.com/android-school/postman-lets-fly-with-apis-48c1a4811c39
+https://www.educative.io/answers/how-to-change-a-git-commit-message-after-a-push
+https://medium.com/@olakunle.abiola/getting-started-with-aws-ecr-797514d7cb4d
+
+  DATE: 31.mar.2023 - Friday ###########################################################################################################################
+
+https://medium.com/geekculture/how-to-run-terraform-script-using-gitlab-ci-cd-b6f448ab0232

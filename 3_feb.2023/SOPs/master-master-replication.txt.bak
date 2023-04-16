@@ -1,0 +1,16 @@
+Master-Master replication 
+
+3.3.3.3 public ip of server 1
+4.4.4.4 public ip of server 2
+
+step-1  on server 1
+
+sudo apt-get install mysql-server mysql-client
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+after opening the file make sure that below lines are uncommented
+
+CREATE USER 'vivant'@'%' IDENTIFIED BY 'vivant@123';
+
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'vivant'@'%' WITH GRANT OPTION;
+https://www.digitalocean.com/community/tutorials/how-to-allow-remote-access-to-mysql

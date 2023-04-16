@@ -1,0 +1,718 @@
+# there was some ssl lines in mysql replication of dev....it was misleading. beacuse of that applied  queries on 3.39.227.194
+# Took time to master-master replicate more than one database. Because we need milagro and utiliko on same server.
+# Milagro package problem 
+# utiliko: docker was not pushing images to custom repo. also not pulling the images
+# Took time time to give me dump file while implementing qa-cicd-test to qa.
+
+Q. What is API Integration ?
+Q. What is API ?
+Q. What is SMTP ?
+Q. What is IAMP ?
+Q. 25,2525, 587,583,465,993 ? 
+Q. What is diff between cmd and entrypoint ?
+Q. What is firewalld ?
+Q. What is diff between expose in docker file and running container on specing port through command ?
+Q. What software versions you use ?
+Q. what is vnstat ?
+
+ DATE: 01.feb.2023 - Wednesday #########################################################################################################################################################
+
+task-update 01.feb.2023
+- replication of multiple database: WIP
+
+
+slave stop; 
+CHANGE MASTER TO MASTER_HOST = '3.39.227.194', MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000166', MASTER_LOG_POS = 41151121; 
+slave start;
+
+CHANGE MASTER TO MASTER_HOST = '43.201.62.110', MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000125', MASTER_LOG_POS = 3283; 
+ 
+ #mysql -u username -p milagro_db< dump-milagro_dev-202301131057.sql
+
+grant replication slave on *.* to 'replicator'@'%'; 
+grant all privileges on *.* to 'replicator'@'%';
+
+GRANT REPLICATION SLAVE ON *.* TO 'slaveuser'@'%';
+After that, of course, re-create everything.
+
+mysqladmin flush-hosts
+
+merged git-issues/sprint230123 into qa-release/sprint230123
+
+ DATE: 02.feb.2023 - Thursday #########################################################################################################################################################
+
+To-do
+Documentation of autodeploymnet of qa-cicd-test branch.
+
+
+
+task-update utiliko-qa-autodeployment  02.feb.2023
+* resolving database connectivity with api issue: WIP
+
+
+
+
+what is package.json in node.js ?
+
+- milagro and utiliko qa autodeployment.
+- master-master replication of mysql
+
+#mysqladmin flush-hosts -u utilikoqa -p
+
+#mysql -u username -p milagro_db< dump-milagro_dev-202301131057.sql
+
+#mysql -u username -p tenant_utiliko<  tenant_utiliko.sql
+
+#mysql -V
+
+upstream qa-backend {
+        server  3.39.227.194:3000;
+        server  43.201.62.110:3000;
+    }
+
+
+server {
+        server_name qapi.utiliko.xyz;
+        gzip on;
+
+        location / {
+        proxy_pass http://qa-backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+#       add_header Access-Control-Allow-Origin *;
+        client_max_body_size 16384m;
+
+                   }
+
+}
+
+
+
+ DATE: 03.feb.2023 - Friday #########################################################################################################################################################
+
+to-do
+1. Changing version of mysql 8 to mysql 5.7
+2. Configuring two gitlab runner for api
+3. 
+git-issues/sprint230123 into qa-release/sprint230123
+
+to-do
+
+1.utiliko-qa autodeployment
+2.milagro-qa autodeployment
+3.docs for 
+4.SSL Implementation
+5.Docker implementation
+6.CICD process
+7.MySQL replecation
+8.Docker logger for node.js and Winston(logger)
+9.Need to create the SOP's: New server, auto deployment, MySQL 		
+10.Create a full proof plans on the projects and the tasks on which we need to work on		
+11.Needs to improve on Speed 		
+12.Need to improve on documentation		
+13.Need to improve on task management
+
+ DATE: 06.feb.2023 - Monday #########################################################################################################################################################
+
+task-update 06.feb.2023
+1. Master-master replication with mysql 5.7: complete
+2. configured two runners for utiliko-api: complete
+3. utiliko-qa-autodeployment with Environment: WIP
+
+
+
+
+to-do
+1. configure gitlab-runner for api
+
+ 
+ 
+ 
+ mysql 8 
+ version mysql 5.7 is not starting in the server.
+ Error:  Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+ 
+ dpkg: warning: while removing mysql-community-server, directory '/etc/mysql' not empty so not removed
+Processing triggers for systemd (245.4-4ubuntu3.19) ...
+
+apt install mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
+
+apt purge mysql-server mysql-client mysql-common mysql-server-core-8* mysql-client-core-8*
+
+sudo apt remove --purge mysql-server
+sudo apt purge mysql-server
+sudo apt autoremove
+sudo apt autoclean
+sudo apt remove dbconfig-mysql
+
+create user 'replicator'@'%' identified by 'replicator@7896';
+
+   Stop slave;
+   CHANGE MASTER TO MASTER_HOST = '3.39.227.194', MASTER_USER = 'replicator', MASTER_PASSWORD = 'replicator@7896', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 806;
+   Start slave;
+   
+   CHANGE MASTER TO MASTER_HOST = '43.201.62.110', MASTER_USER = 'replicator', MASTER_PASSWORD = 'replicator@7896', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 976;
+
+mysql -u root -p tenant_utiliko< tenant_utiliko.sql
+
+utiliko-api-qa-1     runner for api qa 1
+utiliko-api-qa-2     runner for api qa 2
+
+3.39.227.194
+43.201.62.110
+
+
+ DATE: 07.feb.2023 - Tuesday #########################################################################################################################################################
+Task-update 07.feb.2023
+1.Utiliko autodeployment with environment: on hold
+2.Documentation of utiliko-qa autodeployment (Under review): WIP
+
+Branch creation ****************
+oogc/sprint150223
+oomodifierflow/sprint150223
+coa/sprint150223
+
+orp/sprint220223
+scheduler/sprint220223
+
+smr/sprint220323
+
+surveyy/sprint010323
+payout/sprint010323
+exceld/sprint010323
+emailreceipt/sprint010323
+spqr/sprint010323
+smr3d/sprint010323
+
+qa-release/sprint150223
+qa-release/sprint220223
+qa-release/sprint220323
+qa-release/sprint010323
+
+done for ui ******************************
+qa-release/sprint150223
+  oogc/sprint150223
+  oomodifierflow/sprint150223
+  coa/sprint150223
+
+qa-release/sprint220223
+  orp/sprint220223
+  scheduler/sprint220223
+
+qa-release/sprint220323
+  smr/sprint220323
+
+qa-release/sprint010323
+  surveyy/sprint010323
+  payout/sprint010323
+  exceld/sprint010323
+  emailreceipt/sprint010323
+  spqr/sprint010323
+  smr3d/sprint010323
+  
+qa-release/sprint150223
+    migration/sprint150223
+Milagro:
+created for both ui and api 
+
+qa-release/sprint220223
+    smr/sprint220223
+
+qa-release/sprint150223
+qa-release/sprint220223
+qa-release/sprint220323
+qa-release/sprint010323
+
+RUN npm run build --configuration=qa
+RUN node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=qa 
+even if i use above lines one by one  in qa-cicd-test dockerfile
+request is going on localhost:3000
+It seems application is not environment specific.
+
+why there are two push commands in pipeline ?
+
+ DATE: 08.feb.2023 - Wednesday #########################################################################################################################################################
+
+
+Task-update 08.feb.2023
+
+utiliko qa autodeployment
+- Edited Qa-utiliko autodeployment document
+- Edited master-master-replication document
+- Autodeployment of 'qa-cicd-test' working with Environment is working
+
+
+RUN npm run node:build:dev
+
+ DATE: 09.feb.2023 - Thursday #########################################################################################################################################################
+
+
+
+To-do
+1. Milagro qa-autodeployment:- WIP
+- Master-Master REPLICATION: WIP
+- Cicd script: complete
+- Runners configuration: complete 
+- Nginx configuration and applying ssl: WIP
+
+2. qa-cicd-test to qa__after changing the domains.
+
+@Samrat Please create these mentioned branches under qa-release/180223
+qa
+  qa-release/sprint180223
+    
+Utiliko: Sprint branches created
+
+Ssemail/sprint180223
+Ssgit-issues/sprint180223
+Ssmilestone/sprint180223
+git-issues/180223
+Match-transaction/sprint180223
+milestone-list/sprint180223
+
+13.235.33.1     Milagro-QA-CI-CD-LB
+43.205.230.34   Milagro-QA-CI-CD-S1
+13.235.33.120   Milagro-QA-CI-CD-S2
+
+
+
+   Static hostname: ip-172-26-12-254
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 62e7cc2c20ca48f5b68c801b173e87f1
+           Boot ID: 73a9574f82064ef485dc872bbd104b8d
+    Virtualization: xen
+  Operating System: Ubuntu 18.04.1 LTS
+            Kernel: Linux 4.15.0-1021-aws
+      Architecture: x86-64
+	  
+
+Use Below link to Install mysql 5.7 
+https://www.devart.com/dbforge/mysql/how-to-install-mysql-on-ubuntu/
+
+milagro_db
+
+
+Stop slave;
+CHANGE MASTER TO MASTER_HOST = '13.235.33.120', MASTER_USER = 'replicator', MASTER_PASSWORD = 'password', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 976;
+Start slave;
+
+
+sudo iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+
+sudo apt-get install iptables-persistent
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'replicator'@'%' IDENTIFIED BY 'replicator@321';
+
+ubuntu bionic
+ubuntu focal 
+
+
+
+
+To install Docker Engine, you need the 64-bit version of one of these Ubuntu versions:
+
+Ubuntu Kinetic 22.10
+Ubuntu Jammy 22.04 (LTS)
+Ubuntu Focal 20.04 (LTS)
+Ubuntu Bionic 18.04 (LTS)
+Docker Engine is compatible with x86_64 (or amd64), armhf, arm64, and s390x architectures.
+
+1. Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+#sudo apt-get update
+#sudo apt-get install ca-certificates curl gnupg lsb-release
+
+2. Add Docker’s official GPG key:
+#sudo mkdir -m 0755 -p /etc/apt/keyrings
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+3. Use the following command to set up the repository:
+#echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+#sudo apt-get update
+
+#sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+
+milagro-ui-qa-1
+milagro-api-qa-1
+
+milagro-ui-qa-2
+milagro-api-qa-2
+
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
+sudo apt install gitlab-runner 
+
+
+milagro dev runners for ui
+
+milagro-ui-runner
+milagro-ui-runner-gcp
+
+cdui.milagro.ca
+cdapi.milagro.ca
+
+Kanbanhover/sprint180223
+
+sudo certbot --nginx -d cdui.milagro.ca
+sudo certbot --nginx -d cdapi.milagro.ca
+
+https://www.hostinger.com/tutorials/504-gateway-timeout#:~:text=Contact%20Customer%20Support-,What%20Is%20a%20504%20Gateway%20Timeout%20Error%3F,by%20refreshing%20the%20web%20page.
+
+
+ DATE: 10.feb.2023 - Thursday #########################################################################################################################################################
+
+Task-update 10.feb.2023
+1. Milagro-qa autodeployment: on hold (because of package issue)
+- Master-master replication for milagro-qa: complete
+- Cicd for multibranch: complete
+- Nginx configuration and applying SSL: complete
+
+2. R&D on monitering techniques for container logs : WIP
+
+Info $$$$$$$$$$$$$$$$$$$$$$$$$
+
+cdui.milagro.ca
+cdapi.milagro.ca
+
+How we open ports internally ?
+
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000004 |     1058 | milagro_db   |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+
+
+CHANGE MASTER TO MASTER_HOST = '43.205.230.34', MASTER_USER = 'replicator', MASTER_PASSWORD = 'replicator@321', MASTER_LOG_FILE = 'mysql-bin.000004', MASTER_LOG_POS = 1058;
+
+
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000001 |     1880 | milagro_db   |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+1 row in set (0.00 sec)
+
+CHANGE MASTER TO MASTER_HOST = '13.235.33.120', MASTER_USER = 'replicator', MASTER_PASSWORD = 'replicator@321', MASTER_LOG_FILE = 'mysql-bin.000001', MASTER_LOG_POS = 1880;
+
+mysql -u root -p milagro_db< dump-milagro_dev-202301131057.sql
+
+
+ DATE: 13.feb.2023 - Monday #########################################################################################################################################################
+
+13.235.33.1     Milagro-QA-CI-CD-LB
+43.205.230.34   Milagro-QA-CI-CD-S1
+13.235.33.120   Milagro-QA-CI-CD-S2
+
+Certificate is saved at: /etc/letsencrypt/live/utiliko.xyz/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/utiliko.xyz/privkey.pem
+
+docker login "milagro-dev-rpm.milagro.dev" -u "vivant_user" -p "vivant@123"
+
+
+
+docker push "milagro-dev-rpm.milagro.dev/utilko-ui-v2-qa"
+
+
+042cd3f87f43: Layer already exists
+
+
+
+
+
+https://sql.utiliko.xyz/tenant_utiliko.sql
+
+sudo certbot --nginx -d utiliko.xyz
+
+
+
+
+
+
+
+
+
+sudo certbot --server https://acme-v02.api.letsencrypt.org/directory -d *.utiliko.xyz --manual --preferred-challenges dns-01 certonly
+
+
+
+
+ DATE: 14.feb.2023 - Tuesday #########################################################################################################################################################
+
+curl -H 'Accept: application/vnd.docker.distribution.manifest.v2+json' -sk "https://milagro-dev-rpm.milagro.dev/v2/utilko-ui-v2-qa/manifests/latest"
+
+docker login "milagro-dev-rpm.milagro.dev" -u "vivant_user" -p "vivant@123"
+
+docker pull "milagro-dev-rpm.milagro.dev/utilko-ui-v2-qa"
+
+docker tag "milagro-dev-rpm.milagro.dev/utilko-ui-v2-qa" "samratkasarla/utiliko-v2-dev:latest"
+
+mysql -u root -p tenant_utiliko< QAUTLDump20230214.sql 
+
+https://stackoverflow.com/questions/26015160/deterministic-no-sql-or-reads-sql-data-in-its-declaration-and-binary-logging-i
+
+.gitlab-ci.yml
+
+dockerfile
+environment.qa.ts
+
+
+  
+
+
+usermod -aG sudo utilikoqa
+
+ssh-user: utilikoqa
+pass:     utilikoqa@123
+
+
+3.39.227.194
+ssh-user: utilikoqa 
+Pass:     utilikoqa@123
+
+Utilko Db credentials
+
+User: root
+dbname: tenant_utiliko
+DB password: root@7896
+
+Task-update 13.feb.2023
+1. Implemented multibranch cicd on 'qa'
+
+
+ DATE: 15.feb.2023 - Wednesday #########################################################################################################################################################
+
+ssh-user: milagroqa
+pass: milagroqa@123
+
+43.205.230.34
+db_name: milagro_db
+db_user: root
+db_pass: root@7896
+
+minorfixes/sprint220223
+
+Task-update 15.feb.2023
+1. created cronjob for autorenewing ssl : DONE
+2. Milagro autodeployment on qa-cicd-test branch: WIP
+3. To check how to show pipeline status in MR: WIP
+
+ DATE: 16.feb.2023 - Thursday #########################################################################################################################################################
+
+Task-update 16.feb.2023
+1. SSL autorenewal : WIP
+- Asked to do experiment on server but that server was not having routing properties suitable for it........also no domain was mapped to it.
+  not got response from kartik because he was on call.
+
+
+
+timedatectl set-time 21:45:53
+
+date -s "16 Feb 2023 12:19:00"
+
+3.34.43.233
+
+43.201.62.110
+
+
+ DATE: 17.feb.2023 - Friday #############################################################################################################################################################
+
+Task-update - 17.feb.2023
+1. SSL autorenewal: complete
+2. find and implement Centralized monitering of application: WIP
+To-Do:
+1. R&D on Centralized log management system for docker logs.
+
+ssh -i /home/ubuntu/cicdutiliko.pem ubuntu@43.201.62.110
+
+ DATE: 20.feb.2023 - Monday #############################################################################################################################################################
+
+Task-update 20.feb.2023 
+1. Install grafana and implement it to view application logs :- WIP
+
+
+Tasks
+1. Install grafana and implement it to view application logs.
+- 3000 port was already in use. grafana uses 3000 as default port.
+- Nginx was already installed on 13.233.132.61 But it was not serving any page.
+- finding out way to restart docker without affecting containers.
+
+To-do
+1. Install grafana and implement it to view application logs.
+
+
+http://13.233.132.61/
+
+iptables -A INPUT -p tcp -m tcp --dport 3001 -m state --state NEW -j ACCEPT
+
+pinaction/sprint010323
+leave-cc/sprint010323
+
+ DATE: 21.feb.2023 - Tuesday #############################################################################################################################################################
+
+Task-Update 21.feb.2023 
+1. Implementing contineous monitering with grafana and prometheus: WIP
+
+To-do
+1. Install grafana and implement it to view application logs.
+- monitering servers should all traffic should be allowed .
+- Asked to check whether containers monitering can be achived from loadbalancer.
+
+
+
+13.233.132.61:3001
+
+lsof -i -P -n | grep ':9323'
+
+git-issues/sprint010323
+client-payment/sprint010323
+
+wget https://github.com/prometheus/node_exporter/releases/download/v0.15.2/node_exporter-0.15.2.linux-amd64.tar.gz
+
+
+ DATE: 22.feb.2023 - Wednesday #############################################################################################################################################################
+
+Task-update 22.feb.2023
+1. Implementing contineous monitering for utiliko: WIP
+2. Mail-box port issue : WIP
+
+
+To-do
+1. Implementing contineous monitering for utiliko: WIP
+2. Mail-box port issue : WIP
+- Not getting quick reply from K.
+
+
+You're performing an operation over default zone ('public'),
+but your connections/interfaces are in zone 'docker' (see --get-active-zones)
+You most likely need to use --zone=docker option.
+
+ DATE: 24.feb.2023 - Friday #############################################################################################################################################################
+
+
+task 
+1. Implementation of contineous monitering : WIP
+- Grafana user sqlite to store data. It is changed to mysql.
+
+task-update 24.feb.2023
+1. Implementation of contineous monitering : WIP
+
+ DATE: 27.feb.2023 - Monday #############################################################################################################################################################
+
+task-update 27.feb.2023
+1. Implementing monitering for utiliko with grafana and prometheus: WIP
+2. finding solution for invalid port scanning: complete
+
+
+to-do
+1. Implementing monitering for utiliko with grafana and prometheus.
+2. creating gitlab-cicd on N1 N2 server for milagro.
+
+mysql -u USER -pPASSWORD -D DATABASE -e "SQL_QUERY"
+
+ DATE: 28.feb.2023 - Tuesday #############################################################################################################################################################
+
+task-update 28.feb.2023
+1. study on port scanning and vnstat monitering tool in linux
+2.
+milagro 
+- updated migration/sprint010323, migration/sprint080323  with qa
+- merged pinaction/sprint010323, tiny-editor/sprint010323 to migration/sprint010323
+utiliko
+- merged leave-cc/sprint010323 into migration/sprint080323
+- merged git-issues/sprint010323, ssGitIssues/sprint011023 to qa-release/sprint010323
+
+packages
+1. net-tools
+
+------------------------------------------------
+Milagro
+
+@Samrat take qa pull into migration/sprint010323 (renuga ) , migration/sprint080323 (renuga)
+
+then
+raise MR & merge  pinaction/sprint010323 (renuga), tiny-editor/sprint010323 (samir) into  migration/sprint010323
+
+then 
+raise MR & merge leave-cc/sprint010323 (Vaishali ) into migration/sprint080323
+
+incase any conflict you faced, contact respective mentioned person
+------------------------------------------------
+
+@Samrat Utiliko
+
+git-issues/sprint010323, ssGitIssues/sprint011023
+merge this 2 into qa-release/sprint010323
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
